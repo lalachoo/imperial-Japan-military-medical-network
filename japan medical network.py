@@ -22,7 +22,7 @@ import community.community_louvain as community_louvain
 # ══════════════════════════════════════════════════════════════════
 MAX_EDGES      = 15000
 # ══════════════════════════════════════════════════════════════════
-# [PATCH #3] Old-form -> new-form kanji normalization table (merges verified-list new-form with roster old-form)
+# Old-form -> new-form kanji normalization table (merges verified-list new-form with roster old-form)
 NORM = {'澤':'沢','齋':'斎','齊':'斉','髙':'高','邊':'辺','邉':'辺','條':'条','瀨':'瀬','濱':'浜',
         '應':'応','櫻':'桜','圓':'円','學':'学','醫':'医','國':'国','廣':'広','德':'徳','龍':'竜',
         '瀧':'滝','增':'増','峯':'峰','﨑':'崎','眞':'真','彌':'弥','惠':'恵','榮':'栄','晉':'晋',
@@ -102,7 +102,7 @@ def main():
     # Process the verified list last (roster first -> verified list overrides war/group)
     xlsx_files.sort(key=lambda x: 1 if ("검증본" in unicodedata.normalize('NFC', x) or "군의학" in unicodedata.normalize('NFC', x)) else 0)
     if not xlsx_files:
-        print("❌ No Excel (.xlsx) files found.")
+        print("No Excel (.xlsx) files found.")
         return
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
@@ -146,7 +146,7 @@ def main():
         return {t: translate_one(t) for t in unique}
     def clean_text(text):
         return re.sub(r'<br\s*/?>|</br>', ' ', str(text)).strip()
-    print(f"📂 Loading Excel files (Perfect Merging to prevent data loss)...")
+    print(f"Loading Excel files (Perfect Merging to prevent data loss)...")
     raw_dict = {}
     for file in xlsx_files:
         norm_file = unicodedata.normalize('NFC', file)
@@ -178,11 +178,11 @@ def main():
                         kanji_name = nv.replace(" ", " ").strip()
                         trans_target = kanji_name
                 if not kanji_name: continue
-                # [PATCH #3] Merge by normalized-kanji key (unify the same person across verified list and roster)
+                # Merge by normalized-kanji key (unify the same person across verified list and roster)
                 merge_key = norm_key(kanji_name)
                 cat_str = col_cat + col_unit + col_notes
-                # [PATCH #2] Trust only verified-list membership for military classification -> blocks re-entry of nurse/non-physician keywords
-                is_war_curr = is_verified_file and not bool(re.search(r"해군|海軍", cat_str))  # [ARMY-ONLY] exclude Navy
+                # Trust only verified-list membership for military classification -> blocks re-entry of nurse/non-physician keywords
+                is_war_curr = is_verified_file and not bool(re.search(r"해군|海軍", cat_str))  # exclude Navy
                 is_731_curr = bool(re.search(r'731|防疫給水部|石井|방역급수|이시이', cat_str))
                 purged_curr = bool(re.search(r'追放', cat_str))           # postwar public-office / teaching purge
                 _byrs = extract_all_years(col_life)
@@ -237,7 +237,7 @@ def main():
         except Exception as e:
             pass
     raw = list(raw_dict.values())
-    print(f"✅ Merged & Extracted {len(raw)} total records safely.")
+    print(f"Merged & Extracted {len(raw)} total records safely.")
     name_map     = translate_unique([r["name_trans"] for r in raw], "Names")
     school_map   = translate_unique([r["school_ja"] for r in raw], "Schools")
     major_map    = translate_unique([r["major_ja"] for r in raw], "Majors")
@@ -284,7 +284,7 @@ def main():
             for m in get_list(p["major"]): major_idx[m].append(p["uid"])
             for u in get_list(p["mil_unit"]):
                 for m in get_list(p["major"]): compound_idx[(u, m)].append(p["uid"])
-    print(f"🔗 Calculating True Network Statistics...")
+    print(f"Calculating True Network Statistics...")
     true_neighbors_info = defaultdict(dict)
     TrueG = nx.Graph()
     for p in persons:
@@ -318,7 +318,7 @@ def main():
     true_score = {uid: len(nbs) for uid, nbs in true_neighbors_info.items()}
     isolated_true = [u for u in TrueG.nodes() if TrueG.degree(u) == 0]
     TrueG.remove_nodes_from(isolated_true)
-    print(f"🧠 Running Louvain Community Detection (Modularity)...")
+    print(f"Running Louvain Community Detection (Modularity)...")
     partition = community_louvain.best_partition(TrueG, weight='weight', resolution=1.0) if TrueG.number_of_nodes() else {}
     unique_comms = set(partition.values())
     comm_colors = {c: f"hsl({int((c * 137.5) % 360)}, 85%, 60%)" for c in unique_comms}
@@ -331,7 +331,7 @@ def main():
     for c_id, m_list in comm_majors.items():
         if m_list: comm_dom_major[c_id] = Counter(m_list).most_common(1)[0][0]
         else: comm_dom_major[c_id] = "Mixed/General"
-    print(f"🌉 Calculating Betweenness Centrality...")
+    print(f"Calculating Betweenness Centrality...")
     k_samples = min(len(TrueG.nodes()), 500) if TrueG.number_of_nodes() else 0
     betweenness = nx.betweenness_centrality(TrueG, k=k_samples, weight='weight', seed=42) if k_samples else {}
     max_bet = max(betweenness.values()) if betweenness else 1
@@ -340,7 +340,7 @@ def main():
     # ══════════════════════════════════════════════════════════════════
     # Real statistics (replacing the fake placeholders) -> injected into the modal
     # ══════════════════════════════════════════════════════════════════
-    print(f"📈 Computing real statistics (permutation / modularity / brokerage)...")
+    print(f"Computing real statistics (permutation / modularity / brokerage)...")
     import statistics as _st
     pmap = {p["uid"]: p for p in persons}
     war_nodes = list(TrueG.nodes())
@@ -394,13 +394,13 @@ def main():
           f"modularity {mod_full:.3f}→{mod_nomajor:.3f} | broker overlap={brk_overlap}/10 dual={brk_dual} todai={brk_todai} | "
           f"purged war={purged_war}({purged_war_pct:.1f}%) brokers={purged_brk}/10 | density={war_density:.4f}")
 
-    # ===== [ARMY-ONLY] dump all figures for the manuscript =====
+    # ===== figures for the manuscript =====
     from collections import Counter as _C
     _sch=_C(pmap[u]["school"] for u in war_nodes)
     _maj=_C(m.strip() for u in war_nodes for m in str(pmap[u].get("major_ja") or pmap[u].get("major") or "").replace("、",",").replace("・",",").split(",") if m.strip())
     _degvals=sorted(dict(TrueG.degree()).values()) or [0]
     _todai=sum(v for k,v in _sch.items() if ("Tokyo" in str(k)) or ("東京" in str(k)))
-    print("\n========== [ARMY-ONLY figures for the manuscript] ==========")
+    print("\n========== figures for the manuscript ==========")
     print(f"N(army nodes)={len(war_nodes)}  E(edges)={len(edges_tg)}  density={war_density:.4f}")
     print(f"Homophily: observed={obs_h*100:.1f}%  null={null_mean*100:.1f}%  z={z_homophily:.2f}")
     print(f"Modularity (full -> specialty-edges removed): {mod_full:.3f} -> {mod_nomajor:.3f}")
@@ -414,7 +414,7 @@ def main():
         if not b: return "#555555"
         idx = {1850: 0, 1860: 1, 1870: 2, 1880: 3, 1890: 4, 1900: 5, 1910: 6, 1920: 7}.get((b // 10) * 10, 8)
         return f"hsl({max(0, 210 - idx * 26)}, 70%, 55%)"
-    print(f"🕸️ Building Visually Compressed Graph...")
+    print(f"️ Building Visually Compressed Graph...")
     G = nx.Graph()
     for p in persons: G.add_node(p["uid"])
     for (u_name, m_name), members in compound_idx.items():
@@ -422,19 +422,19 @@ def main():
             for m in members:
                 targets = random.sample(members, min(10, len(members)-1))
                 for t in targets:
-                    if m != t: G.add_edge(m, t, etype="both", title=f"🔗 Shared: {u_name} & {m_name}")
+                    if m != t: G.add_edge(m, t, etype="both", title=f"Shared: {u_name} & {m_name}")
     for u_name, members in mil_idx.items():
         if len(members) > 1:
             for m in members:
                 targets = random.sample(members, min(10, len(members)-1))
                 for t in targets:
-                    if m != t: G.add_edge(m, t, etype="unit", title=f"🔗 Shared Unit: {u_name}")
+                    if m != t: G.add_edge(m, t, etype="unit", title=f"Shared Unit: {u_name}")
     for m_name, members in major_idx.items():
         if len(members) > 1:
             for m in members:
                 targets = random.sample(members, min(10, len(members)-1))
                 for t in targets:
-                    if m != t: G.add_edge(m, t, etype="major", title=f"🔗 Shared Major: {m_name}")
+                    if m != t: G.add_edge(m, t, etype="major", title=f"Shared Major: {m_name}")
     connected = set(G.nodes())
     pos = {}
     def get_geo_coords(s_ja):
@@ -451,8 +451,8 @@ def main():
         if "順天堂" in s_ja: return 139.76, 35.70
         if re.search(r"東京|横浜", s_ja): return 139.70, 35.65
         if re.search(r"名古屋|愛知", s_ja): return 136.93, 35.15
-        if re.search(r"京都帝|京大", s_ja): return 135.78, 35.02   # [PATCH #6] in → re.search
-        if re.search(r"大阪帝|阪大", s_ja): return 135.52, 34.82   # [PATCH #6] in → re.search
+        if re.search(r"京都帝|京大", s_ja): return 135.78, 35.02   # regex match for school-name variants
+        if re.search(r"大阪帝|阪大", s_ja): return 135.52, 34.82   # regex match for school-name variants
         if re.search(r"大阪|関西", s_ja): return 135.50, 34.69
         if re.search(r"神戸|兵庫", s_ja): return 135.19, 34.69
         if "岡山" in s_ja: return 133.91, 34.66
@@ -499,7 +499,7 @@ def main():
                 r = R_school * math.sqrt(idx / max(1, len(scholars)))
                 theta = idx * 137.508 * (math.pi / 180.0)
                 pos[p["uid"]] = np.array([sx + r * math.cos(theta), sy + r * math.sin(theta)])
-    print("✨ Applying Fast KDTree physics...")
+    print("Applying Fast KDTree physics...")
     node_uids = list(connected)
     if node_uids:
         pos_ary = np.array([pos[u] for u in node_uids], dtype=float)
@@ -547,8 +547,8 @@ def main():
         init_border = color_comm if p["is_war"] else color_bg
         clean_tooltip = f"{p['name_ja']}\n"
         if p["is_war"] and p['mil_unit'] not in ("", "-", "Unknown"):
-            clean_tooltip += f"🏢 Post: {p['mil_unit']}\n"
-        clean_tooltip += f"🎓 Alma Mater: {p['school']}\n🔬 Major: {p['major']}"
+            clean_tooltip += f"Post: {p['mil_unit']}\n"
+        clean_tooltip += f"Alma Mater: {p['school']}\nMajor: {p['major']}"
         net.add_node(uid, label=" ", title=clean_tooltip, size=n_size, shape=n_shape,
             borderWidth=b_width, color={"background": init_bg, "border": init_border},
             x=float(x), y=float(y))
@@ -671,20 +671,20 @@ def main():
   <p>Structural Holes & Academic Factions</p>
 </div>
 <div id="cp">
-  <h3>🔍 Network Analyzer</h3>
+  <h3>Network Analyzer</h3>
   <div style="background:#1e293b; padding:10px; border-radius:6px; margin-bottom:12px; border:1px solid #475569; text-align:center;">
       <span style="font-size:12px; color:#cbd5e1; display:block; margin-bottom:6px;">
           Total: <b>{total_count}</b> | Mil-Med: <b>{war_count}</b> | Field-adj: <b>{field_count}</b>
       </span>
       <label class="checkbox-container" style="justify-content:center; margin:0; padding:6px; background:#0f172a; border-radius:4px; border:1px solid #3b82f6; color:#60a5fa;">
-        <input type="checkbox" id="warOnlyToggle"> 🎖️ Show Military Med Only
+        <input type="checkbox" id="warOnlyToggle"> ️ Show Military Med Only
       </label>
   </div>
   <input id="si" type="text" placeholder="Search Name, School, Unit, Major" autocomplete="off">
   <div id="sr"></div>
-  <button id="rb" class="btn-primary">🔄 Reset View</button>
+  <button id="rb" class="btn-primary">Reset View</button>
   <div class="ctrl-group">
-    <span class="ctrl-label">🎨 Node Color Mode</span>
+    <span class="ctrl-label">Node Color Mode</span>
     <select id="colorModeSelect" class="select-css">
       <option value="school">① Alma Mater (School)</option>
       <option value="community">② Louvain Community</option>
@@ -692,52 +692,52 @@ def main():
       <option value="group">④ War Involvement (Branch)</option>
       <option value="cohort">⑤ Birth Cohort</option>
     </select>
-    <span class="ctrl-label">🔬 Network Filters</span>
+    <span class="ctrl-label">Network Filters</span>
     <label class="checkbox-container">
-      <input type="checkbox" id="brokerToggle"> 🌟 Highlight Top 20 Brokers (Betweenness)
+      <input type="checkbox" id="brokerToggle"> Highlight Top 20 Brokers (Betweenness)
     </label>
     <label class="checkbox-container">
-      <input type="checkbox" id="unit731Toggle"> 🩸 Highlight Unit 731 / Epidemic
+      <input type="checkbox" id="unit731Toggle"> Highlight Unit 731 / Epidemic
     </label>
     <label class="checkbox-container">
-      <input type="checkbox" id="purgedToggle"> ⚖️ Highlight Postwar Purged (追放)
+      <input type="checkbox" id="purgedToggle"> ️ Highlight Postwar Purged (追放)
     </label>
     <label class="checkbox-container">
-      <input type="checkbox" id="edgeToggle"> ✂️ Hide 'Major' Edges (Robustness)
+      <input type="checkbox" id="edgeToggle"> ️ Hide 'Major' Edges (Robustness)
     </label>
     <label class="checkbox-container">
-      <input type="checkbox" id="fieldAdjToggle"> 🟧 Include Field-adjacent
+      <input type="checkbox" id="fieldAdjToggle"> Include Field-adjacent
     </label>
-    <span class="ctrl-label" style="margin-top:10px;">🎥 Camera View Presets</span>
+    <span class="ctrl-label" style="margin-top:10px;">Camera View Presets</span>
     <div style="display:flex; gap:4px; margin-bottom:10px;">
       <button class="btn-outline" style="margin-top:0;" onclick="network.fit({{animation:{{duration:700}} }})">Full</button>
       <button class="btn-outline" style="margin-top:0;" onclick="network.moveTo({{position:{{x:{kanto_x}, y:{kanto_y}}}, scale:0.09, animation:{{duration:700}} }})">Kanto</button>
       <button class="btn-outline" style="margin-top:0;" onclick="network.moveTo({{position:{{x:{kansai_x}, y:{kansai_y}}}, scale:0.09, animation:{{duration:700}} }})">Kansai</button>
       <button class="btn-outline" style="margin-top:0;" onclick="network.moveTo({{position:{{x:{colony_x}, y:{colony_y}}}, scale:0.12, animation:{{duration:700}} }})">Colonies</button>
     </div>
-    <span class="ctrl-label" style="margin-top:10px;">🖼️ Figure / Poster</span>
+    <span class="ctrl-label" style="margin-top:10px;">️ Figure / Poster</span>
     <div style="display:flex; gap:4px; margin-bottom:6px;">
-      <button id="posterToggle" class="btn-outline" style="margin-top:0; border-color:#f59e0b; color:#f59e0b;">🖼️ Poster</button>
+      <button id="posterToggle" class="btn-outline" style="margin-top:0; border-color:#f59e0b; color:#f59e0b;">️ Poster</button>
       <button id="lightBgToggle" class="btn-outline" style="margin-top:0;">◻️ Light BG</button>
-      <button id="posterEdgeToggle" class="btn-outline" style="margin-top:0; background:rgba(59,130,246,0.2);">🔗 Edges</button>
+      <button id="posterEdgeToggle" class="btn-outline" style="margin-top:0; background:rgba(59,130,246,0.2);">Edges</button>
     </div>
     <div style="font-size:11px;color:#94a3b8;margin-bottom:2px;">Node size (scale)
       <input id="sizeSlider" type="range" min="4" max="22" value="9" style="width:100%;"></div>
     <div style="font-size:11px;color:#94a3b8;margin-bottom:8px;">Label threshold (smaller → more labels)
       <input id="labelSlider" type="range" min="20" max="100" value="42" style="width:100%;"></div>
-    <button id="btnScreenshot" class="btn-outline" style="border-color:#10b981; color:#10b981;">📸 Export PNG (Screenshot)</button>
-    <button id="btnStats" class="btn-outline">📊 View Statistical Analysis</button>
+    <button id="btnScreenshot" class="btn-outline" style="border-color:#10b981; color:#10b981;">Export PNG (Screenshot)</button>
+    <button id="btnStats" class="btn-outline">View Statistical Analysis</button>
   </div>
   <div class="lg-section">
-    <div id="legend-title">🎓 Alma Mater (Top 20)</div>
+    <div id="legend-title">Alma Mater (Top 20)</div>
     <div id="legend-content"></div>
     <div style="margin-top:12px; padding-top:12px; border-top:1px dashed #475569;">
-      <b>🔗 Edges</b><br>
+      <b>Edges</b><br>
       <span style="color:#c084fc; font-weight:bold;">━</span> Purple: <b>Both unit & major</b><br>
       <span style="color:#60a5fa; font-weight:bold;">━</span> Blue: <b>Same military unit</b><br>
       <span style="color:#f87171; font-weight:bold;">━</span> Red: <b>Same major</b><br><br>
       ⭐ <b>Star</b> = Top Brokers (Betweenness)<br>
-      🌈 <b>Border</b> = Modularity Community
+      <b>Border</b> = Modularity Community
     </div>
   </div>
 </div>
@@ -762,7 +762,7 @@ def main():
   <div id="connected-list-container"></div>
 </div>
 <div id="statsModal">
-  <h3>📊 Statistical Validation (computed, not placeholder)</h3>
+  <h3>Statistical Validation (computed, not placeholder)</h3>
   <div class="stats-section">
     <b>1. School Homophily (permutation test, n=500)</b><br>
     Military-medicine subnetwork: {len(war_nodes)} nodes · {len(edges_tg)} edges<br>
@@ -890,11 +890,11 @@ window.addEventListener('load',function(){{
       colorMode = e.target.value;
       var lt = document.getElementById('legend-title');
       var lc = document.getElementById('legend-content');
-      if(colorMode === 'school') {{ lt.innerText = "🎓 Alma Mater (Top 20)"; lc.innerHTML = leg_school; }}
-      else if(colorMode === 'community') {{ lt.innerText = "🌈 Communities (Top 20)"; lc.innerHTML = leg_comm; }}
-      else if(colorMode === 'betweenness') {{ lt.innerText = "📊 Betweenness Score"; lc.innerHTML = leg_bet; }}
-      else if(colorMode === 'group') {{ lt.innerText = "🎖️ War Involvement (Branch)"; lc.innerHTML = leg_group; }}
-      else if(colorMode === 'cohort') {{ lt.innerText = "🎂 Birth Cohort"; lc.innerHTML = leg_cohort; }}
+      if(colorMode === 'school') {{ lt.innerText = "Alma Mater (Top 20)"; lc.innerHTML = leg_school; }}
+      else if(colorMode === 'community') {{ lt.innerText = "Communities (Top 20)"; lc.innerHTML = leg_comm; }}
+      else if(colorMode === 'betweenness') {{ lt.innerText = "Betweenness Score"; lc.innerHTML = leg_bet; }}
+      else if(colorMode === 'group') {{ lt.innerText = "️ War Involvement (Branch)"; lc.innerHTML = leg_group; }}
+      else if(colorMode === 'cohort') {{ lt.innerText = "Birth Cohort"; lc.innerHTML = leg_cohort; }}
       applyVisuals();
   }});
   document.getElementById('brokerToggle').addEventListener('change', function(e) {{ highlightBrokers = e.target.checked; applyVisuals(); }});
@@ -1036,13 +1036,13 @@ window.addEventListener('load',function(){{
       selectedNodeId = uid; searchHitIds = null;
       document.getElementById('pn').textContent = m.name + " (" + m.name_ja + ")";
       document.getElementById('pd').innerHTML =
-          '🎓 <b>School:</b> ' + m.school + '<br>' +
-          '🌈 <b>Community:</b> ID ' + m.community + ' (' + m.dom_major + ')<br>' +
-          '🔬 <b>Major:</b> ' + m.major + '<br>' +
-          (m.is_war ? '🎖️ <b>Branch:</b> ' + m.group + (m.unit731 ? ' · <span style="color:#ff6b6b;">731/防疫</span>' : '') + '<br>' : '') +
-          '🏢 <b>Gen Affil:</b> ' + m.gen_unit + '<br>' +
-          '⚔️ <b>Mil Unit:</b> ' + m.mil_unit + '<br>' +
-          '🎂 <b>Cohort:</b> ' + m.cohort + (m.purged ? ' · <span style="color:#f59e0b;">⚖️ Postwar purge</span>' : '');
+          '<b>School:</b> ' + m.school + '<br>' +
+          '<b>Community:</b> ID ' + m.community + ' (' + m.dom_major + ')<br>' +
+          '<b>Major:</b> ' + m.major + '<br>' +
+          (m.is_war ? '️ <b>Branch:</b> ' + m.group + (m.unit731 ? ' · <span style="color:#ff6b6b;">731/防疫</span>' : '') + '<br>' : '') +
+          '<b>Gen Affil:</b> ' + m.gen_unit + '<br>' +
+          '️ <b>Mil Unit:</b> ' + m.mil_unit + '<br>' +
+          '<b>Cohort:</b> ' + m.cohort + (m.purged ? ' · <span style="color:#f59e0b;">️ Postwar purge</span>' : '');
       var pa = document.getElementById('pa');
       pa.style.display = 'flex';
       var safeSchool = m.school ? m.school.replace(/'/g, "\\'") : "";
@@ -1054,7 +1054,7 @@ window.addEventListener('load',function(){{
       document.getElementById('stp').style.display = 'block';
       document.getElementById('stat-deg').innerText = m.score;
       document.getElementById('stat-bet').innerText = m.is_war ? '#' + m.bet_rank : 'N/A';
-      var listHTML = "<b>🔗 Faction Network (" + m.neighbors_data.length + " links)</b><br><br>";
+      var listHTML = "<b>Faction Network (" + m.neighbors_data.length + " links)</b><br><br>";
       var displayCount = Math.min(m.neighbors_data.length, 500);
       for(var i=0; i<displayCount; i++) {{
           var nd = m.neighbors_data[i];
@@ -1117,7 +1117,7 @@ window.addEventListener('load',function(){{
       mCtx.fillStyle = "rgba(59, 130, 246, 0.15)";
       mCtx.fillRect(mvx, mvy, clientW * scale, clientH * scale);
       mCtx.fillStyle = "#cbd5e1"; mCtx.font = "bold 13px Arial";
-      mCtx.fillText("🗺️ Mini Map", 12, 22);
+      mCtx.fillText("️ Mini Map", 12, 22);
   }});
   setTimeout(function(){{ applyVisuals(); }}, 500);
 }});
@@ -1132,7 +1132,7 @@ window.addEventListener('load',function(){{
         f.write(html)
     gexf_path = os.path.join(script_dir, "japan_medical_network.gexf")
     write_gexf(G, persons, pos, gexf_path)
-    print(f"\n🎉 Done! HTML generated with all Analytical UI features.")
+    print(f"\nDone! HTML generated with all Analytical UI features.")
 def write_gexf(G, persons, pos, path):
     uid_map = {p["uid"]: p for p in persons}
     root  = ET.Element("gexf", {"xmlns": "http://gexf.net/1.3", "xmlns:viz": "http://www.gexf.net/1.2draft/viz", "version": "1.3"})
