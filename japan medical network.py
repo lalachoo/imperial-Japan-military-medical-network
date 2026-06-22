@@ -59,7 +59,10 @@ def get_grad_year(text):
     return None
 def normalize_school_ja(s):
     if not s or s in ("-", "Unknown"): return "Unknown"
-    s_clean = s.replace(" ", "").replace(" ", "")
+    # 졸업연도 등 괄호 꼬리표 제거 (예: '岡山医科大学 (昭和9年卒)' -> '岡山医科大学')
+    s = re.sub(r"\s*[\(（].*?[\)）]\s*", "", str(s)).strip()
+    if not s: return "Unknown"
+    s_clean = s.replace(" ", "").replace("　", "")
     if re.search(r"東京帝|東大|東京大", s_clean): return "東京帝国大学"
     if re.search(r"京都帝|京大|京都大", s_clean): return "京都帝国大学"
     if re.search(r"九州帝|九大|九州大", s_clean): return "九州帝国大学"
@@ -70,7 +73,16 @@ def normalize_school_ja(s):
     if re.search(r"慶應|慶応", s_clean): return "慶應義塾大学"
     if re.search(r"千葉", s_clean): return "千葉医科大学"
     if s_clean == "帝国대" or s_clean == "帝国大学": return "東京帝国大学"
-    return s
+    # 표기 변이(약칭·이표기) 통합 — 같은 학교가 다른 라벨로 쪼개지는 것 방지
+    _aliases = {
+        "慈恵会医科大学": "慈恵医科大学", "慈恵医大": "慈恵医科大学",
+        "台北医科専門学校": "台北医学専門学校",
+        "昭和医専": "昭和医学専門学校", "長崎医専": "長崎医科大学",
+        "東京医科専門学校": "東京医学専門学校", "日本医学校": "日本医科大学",
+        "新潟医学専門学校": "新潟医科大学", "熊本医学専門学校": "熊本医科大学",
+        "京都府立医学専門学校": "京都府立医科大学", "金沢医科専門学校": "金沢医科大学",
+    }
+    return _aliases.get(s_clean, s)
 def split_affiliations(unit_text):
     if not unit_text or unit_text in ("-", "Unknown", "―"): return "Unknown", "Unknown"
     parts = [p.strip() for p in re.split(r'[,、・\s]+', unit_text) if p.strip()]
@@ -319,6 +331,7 @@ def main():
     isolated_true = [u for u in TrueG.nodes() if TrueG.degree(u) == 0]
     TrueG.remove_nodes_from(isolated_true)
     print(f"Running Louvain Community Detection (Modularity)...")
+    random.seed(42)  # 커뮤니티 탐지 재현성 고정 (모듈성 Q가 매 실행 동일하게 산출되도록)
     partition = community_louvain.best_partition(TrueG, weight='weight', resolution=1.0) if TrueG.number_of_nodes() else {}
     unique_comms = set(partition.values())
     comm_colors = {c: f"hsl({int((c * 137.5) % 360)}, 85%, 60%)" for c in unique_comms}
@@ -353,6 +366,7 @@ def main():
         return c / len(edges_tg)
     obs_h = _same_sch(sch)
     _labs = [sch[u] for u in war_nodes]
+    random.seed(42)  # 순열검정 재현성 고정 (z·obs가 매 실행 동일하게 산출되도록)
     _nulls = []
     for _ in range(500):
         _sh = _labs[:]; random.shuffle(_sh)
@@ -371,6 +385,7 @@ def main():
             for a, b in itertools.combinations(members, 2): TrueG_nm.add_edge(a, b)
     TrueG_nm.remove_nodes_from([n for n in list(TrueG_nm.nodes()) if TrueG_nm.degree(n) == 0])
     if TrueG_nm.number_of_edges() > 0:
+        random.seed(42)  # 전공엣지 제거 모듈성 재현성 고정
         _pnm = community_louvain.best_partition(TrueG_nm, resolution=1.0)
         mod_nomajor = community_louvain.modularity(_pnm, TrueG_nm)
     else:
