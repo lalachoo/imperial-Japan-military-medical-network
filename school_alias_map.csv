@@ -1,0 +1,23 @@
+rule_type,raw_label,canonical_label,note
+graduation_year_tag,岡山医科大学 (昭和9年卒),岡山医科大学,split because the parenthetical graduation year was not stripped
+graduation_year_tag,大阪医科大学 (昭和2年卒),大阪医科大学,split because the parenthetical graduation year was not stripped
+graduation_year_tag,大阪医科大学 (昭和6年卒),大阪医科大学,split because the parenthetical graduation year was not stripped
+graduation_year_tag,新潟医科大学 (昭和8年卒),新潟医科大学,split because the parenthetical graduation year was not stripped
+graduation_year_tag,九州医学専門学校 (昭和12年卒),九州医学専門学校,split because the parenthetical graduation year was not stripped
+graduation_year_tag,大阪高等医学専門学校 (昭和8年卒),大阪高等医学専門学校,split because the parenthetical graduation year was not stripped
+graduation_year_tag,東京高等歯科医学校 (昭和4年卒),東京高等歯科医学校,split because the parenthetical graduation year was not stripped
+graduation_year_tag,日本赤十字社病院救護看護婦養成所 (大正4年卒),日本赤十字社病院救護看護婦養成所,nurse training institute; may fall outside the analytic population
+orthographic_variant,慈恵会医科大学,慈恵医科大学,alternative rendering of the same school
+orthographic_variant,慈恵医大,慈恵医科大学,abbreviation of the same school
+orthographic_variant,台北医科専門学校,台北医学専門学校,alternative rendering (医科 / 医学) of the same school
+orthographic_variant,昭和医専,昭和医学専門学校,abbreviation of the same school
+orthographic_variant,東京医科専門学校,東京医学専門学校,alternative rendering (医科 / 医学) of the same school
+orthographic_variant,日本医学校,日本医科大学,predecessor and successor names of one institution
+promotion_same_lineage,長崎医専,長崎医科大学,promoted from medical college to medical university
+promotion_same_lineage,新潟医学専門学校,新潟医科大学,promoted from medical college to medical university
+promotion_same_lineage,熊本医学専門学校,熊本医科大学,promoted from medical college to medical university
+promotion_same_lineage,京都府立医学専門学校,京都府立医科大学,promoted from medical college to medical university
+promotion_same_lineage,金沢医科専門学校,金沢医科大学,promoted from medical college to medical university
+reference_not_merged,九州医学専門学校,(separate institution),distinct from 九州帝国大学 and therefore not merged
+reference_not_merged,東京医学専門学校,(separate institution),distinct from 東京帝国大学 and therefore not merged
+reference_not_merged,大阪医科大学,(kept separate),predecessor of 大阪帝国大学 but kept separate to preserve year of entry

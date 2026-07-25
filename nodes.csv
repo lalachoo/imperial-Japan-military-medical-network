@@ -1,0 +1,445 @@
+node_id,name,school,major,military_unit,degree,betweenness_rank,community,unit731
+n7,青木 九一郎,Kyoto Imperial University,aviation medicine,Unknown,1,363,0,0
+n15,青木 義勇,Nagasaki Medical University,bacteriology,Unknown,26,262,0,0
+n27,赤倉 一郎,Keio University,surgery,affiliated hospital,76,30,1,0
+n31,明石 勝英,Hokkaido Imperial University,Obstetrics and gynecology,Unknown,14,292,8,0
+n45,秋田 八年,Kyushu Imperial University,surgery,Unknown,49,224,1,0
+n46,秋松 純一,Kyushu Imperial University,Otorhinolaryngology,Unknown,14,129,3,0
+n74,浅野 誠一,Keio University,Internal medicine,Unknown,85,156,4,0
+n85,朝山 新一,Kyoto Imperial University,"embryology, sexology",Unknown,1,364,5,0
+n96,麻生 徹男,Kyushu Imperial University,Obstetrics and gynecology,Unknown,14,293,8,0
+n102,阿知波 五郎,Kyushu Imperial University,"Internal medicine, Medical history",Unknown,88,87,4,0
+n110,安倍 三史,Hokkaido Imperial University,hygiene,Unknown,17,337,6,0
+n112,阿部 達夫,Keio University,"Internal medicine, Nutrition",Saiseikai Yokohama City Nanbu Hospital,87,18,4,0
+n117,天岸 敏介,Osaka Medical University,"Microbiology, Hygiene, Ophthalmology",Unknown,40,15,6,0
+n119,天児 民和,Kyushu Imperial University,orthopedic surgery,"Affiliated Hospital, Kyushu Rosai Hospital",35,79,8,0
+n122,天野 恒久,Osaka Imperial University,bacteriology,National Osaka Hospital,26,263,0,0
+n124,綾部 正大,Kyushu Imperial University,surgery,affiliated hospital,76,31,1,0
+n130,新井 恒人,Hokkaido Imperial University,pathology,Unknown,25,319,7,0
+n142,有賀 槐三,Nihon University Specialized Department,Internal medicine,Surugadai Nihon University Hospital,85,157,4,0
+n143,有末 四郎,Hokkaido Imperial University,"Internal medicine, Welfare administration",Unknown,95,19,4,0
+n163,安東 洪次,Tokyo Imperial University,bacteriology,Unknown,26,264,0,1
+n180,飯沼 巖,Nagoya Medical University,ophthalmology,Wakayama Rosai Hospital,21,305,6,0
+n181,飯野 三郎,Tokyo Imperial University,orthopedic surgery,affiliated hospital,49,57,8,0
+n184,家原 小文治,Kyushu Imperial University,Internal medicine,Harbin Military Hospital,85,158,4,0
+n186,庵 政三,Kanazawa Medical University,"Internal medicine, community medicine",Unknown,86,106,4,0
+n204,池松 武之亮,Daegu Medical College,Otorhinolaryngology,Unknown,14,130,3,0
+n208,伊崎 正勝,Keio University,"Dermatology, Hansen's disease medicine",Unknown,14,144,8,0
+n209,伊沢 一男,Meiji Pharmaceutical College,Pharmacy,Unknown,4,365,9,0
+n215,石井 四郎,Kyoto Imperial University,bacteriology,"Manchurian Unit 731, Army Medical College",42,7,0,1
+n216,石井 善一郎,Tokyo Imperial University,pathology,Saku General Hospital,25,320,7,0
+n222,石垣 純二,Tokyo Imperial University,"Welfare administration, medical critic",Unknown,11,354,10,0
+n228,石川 清,Chiba Medical University,ophthalmology,Unknown,21,306,6,0
+n230,石川 七郎,Keio University,surgery,Unknown,49,225,1,0
+n233,石川 太刀雄,Kyoto Imperial University,"Pathology, Oriental medicine",Unknown,26,55,7,1
+n263,石館 守三,Tokyo Imperial University,Pharmacy,Unknown,4,366,9,0
+n265,石津 寛,Tokyo Imperial University,ophthalmology,"Army Medical College, Japanese Red Cross Hospital",35,53,6,0
+n268,石塚 直隆,Osaka Imperial University,Obstetrics and gynecology,Unknown,14,294,8,0
+n271,石橋 卯吉,Keio University,Welfare administration,Unknown,11,355,10,0
+n275,石橋 豊彦,Chiba Medical University,pathology,Unknown,25,321,7,0
+n285,石原 恵三,Tokyo Imperial University,surgery,affiliated hospital,76,32,1,0
+n286,石原 忍,Tokyo Imperial University,ophthalmology,"Army Medical College, Tokyo Teishin Hospital",37,43,6,0
+n287,石原 寿郎,Tokyo Imperial University,dental,affiliated hospital,32,93,8,0
+n292,石光 薫,Tokyo Imperial University,Internal medicine,Unknown,85,159,4,1
+n309,板垣 政参,Kyoto Imperial University,physiology,Unknown,9,367,11,0
+n338,伊藤 昌一,Tohoku Imperial University,anatomy,Unknown,15,368,5,0
+n339,伊藤 真次,Nagoya Medical University,physiology,Unknown,9,369,11,0
+n364,稲垣 克彦,Tokyo Imperial University,Internal medicine,Tokyo Police Hospital,86,112,4,0
+n373,稲臣 成一,Okayama Medical University,parasitology,Kagawa Rosai Hospital,7,370,12,0
+n384,伊能 秀記,Tokyo Medical College,surgery,Ryogoku Hospital,49,226,1,0
+n395,井上 五郎,Kyoto Prefectural University of Medicine,nutrition,Unknown,2,371,13,0
+n403,井上 達二,Tokyo Imperial University,ophthalmology,Inoue Eye Hospital,21,307,6,0
+n410,井上 義弘,Taipei Medical College,Ground Self-Defense Force medical officer,Unknown,1,372,0,0
+n414,猪瀬 正,Tokyo Imperial University,psychiatry,Unknown,19,282,7,0
+n421,今泉 恭二郎,Kyushu Imperial University,psychiatry,Osaka Kaisei Hospital,19,283,7,0
+n428,井街 譲,Kyoto Imperial University,ophthalmology,affiliated hospital,51,5,6,0
+n459,岩田 和夫,Tokyo Imperial University,bacteriology,Unknown,26,265,0,0
+n460,岩田 繁雄,Kyoto Imperial University,Internal medicine,Unknown,85,160,4,0
+n470,岩原 寅猪,Keio University,orthopedic surgery,Unknown,21,212,8,0
+n484,上田 英雄,Tokyo Imperial University,"Internal medicine (cardiology, hepatology)","Affiliated Hospital, Chuo Railway Hospital",95,60,4,0
+n497,上野 幸久,Tokyo Imperial University,Internal medicine,Unknown,85,161,4,0
+n502,植村 秀一,Aichi Medical College,"Internal medicine, Welfare administration",Unknown,95,20,4,0
+n509,宇治 達郎,Tokyo Imperial University,surgery,Uji Hospital,49,227,1,0
+n512,牛場 大蔵,Keio University,"Bacteriology, Medical Education",Unknown,28,78,0,0
+n519,内田 誉,Osaka Imperial University,Internal medicine,National Health Insurance Hyogo Central Hospital,85,162,4,0
+n542,梅沢 浜夫,Tokyo Imperial University,bacteriology,Unknown,26,266,0,0
+n549,梅原 千治,Tokyo Imperial University,Internal medicine,Unknown,85,163,4,0
+n596,大江 規玄,Tokyo Imperial University,anatomy,Unknown,15,373,5,0
+n605,大久保 滉,Kyoto Imperial University,Internal medicine,affiliated hospital,111,24,4,0
+n607,大熊 篤二,Tokyo Imperial University,ophthalmology,Unknown,21,308,6,0
+n610,大黒 勇,Jikei Medical University,bacteriology,Unknown,26,267,0,0
+n624,大島 良雄,Tokyo Imperial University,"Internal medicine, Hot spring medicine",affiliated hospital,111,25,4,0
+n628,大鈴 弘文,Tokyo Imperial University,Internal medicine,"Tokyo National Hospital, Tokyo Police Hospital",86,113,4,0
+n634,太田 邦夫,Tokyo Imperial University,pathology,Unknown,25,322,7,0
+n642,太田 元次,Nagoya Medical University,"Medical school education, surgery",Unknown,51,96,1,0
+n658,大谷 藤郎,Kyoto Imperial University,Welfare administration,Unknown,11,356,10,0
+n665,大塚 任,Tokyo Imperial University,ophthalmology,Tokyo Police Hospital,23,104,6,0
+n676,大鶴 正満,Taipei Imperial University,parasitology,Unknown,7,374,12,1
+n694,大橋 成一,Tokyo Imperial University,"Pathology, Laboratory Medicine","National Tokyo Daiichi Hospital, Social Insurance Central General Hospital",31,14,7,0
+n696,大橋 六郎,Kyoto Imperial University,Welfare administration,Unknown,11,357,10,0
+n702,大原 達,Hokkaido Imperial University,bacteriology,Unknown,26,268,0,0
+n708,大藤 真,Okayama Medical University,"Internal medicine, Immunology",affiliated hospital,112,4,4,0
+n723,大和田 国夫,Keio University,hygiene,Unknown,17,338,6,0
+n727,岡 捨巳,Tohoku Imperial University,Internal medicine,Anti-Ken University Hospital,85,164,4,0
+n736,岡崎 英彦,Kyoto Imperial University,"Pediatrics, Medical care for children with disabilities",Unknown,18,259,8,0
+n782,岡野 丈雄,Kyushu Imperial University,hygiene,Unknown,17,339,6,0
+n783,岡林 篤,Tokyo Imperial University,"pathology, allergy",Unknown,26,92,7,0
+n793,岡本 耕造,Kyoto Imperial University,pathology,Unknown,25,323,7,1
+n794,岡本 彰祐,Keio University,physiology,Unknown,9,375,11,0
+n808,小川 睦之輔,Kyoto Imperial University,anatomy,Unknown,15,376,5,0
+n813,小川 義雄,Jikei Medical University,"Physiology, Physical education",Unknown,9,377,11,0
+n820,荻野 恒一,Kyoto Imperial University,"Psychiatry, Psychopathology, Pathology",Unknown,44,38,7,0
+n826,奥田 観士,Okayama Medical University,ophthalmology,National Okayama Hospital,21,309,6,0
+n828,奥田 邦雄,Manchuria Medical University,"Internal medicine (gastroenterology, hepatology)",National Chiba Hospital,85,165,4,0
+n832,奥野 良臣,Osaka Imperial University,"Virology, vaccine development",Unknown,4,378,0,0
+n836,奥村 二吉,Kyushu Imperial University,psychiatry,affiliated hospital,49,21,7,0
+n850,長村 重之,Tokyo Imperial University,Internal medicine,"National Kumamoto Hospital, National Sanatorium Tokyo Hospital",85,166,4,0
+n862,小田 完五,Kyoto Prefectural University of Medicine,urology,Unknown,11,150,8,0
+n874,小野 庸,Kyushu Higher Medical College,Radiology,Unknown,8,379,8,0
+n890,織畑 秀夫,Tokyo Imperial University,surgery,Unknown,49,228,1,0
+n892,恩地 裕,Osaka Imperial University,"Orthopedics, Anesthesiology",affiliated hospital,53,23,8,0
+n905,柿崎 勉,Tokyo Imperial University,urology,"Mitsui Kosei Hospital, Kofu City Hospital",13,103,8,0
+n906,柿下 正道,Kanazawa Medical University,Internal medicine,Unknown,85,167,4,0
+n914,加倉井 駿一,Keio University,Welfare administration,Unknown,11,358,10,0
+n921,影山 圭三,Keio University,pathology,Unknown,25,324,7,0
+n935,加地 正隆,Kyushu Imperial University,Internal medicine,Unknown,85,168,4,0
+n948,柏木 大治,Kyushu Imperial University,orthopedic surgery,Unknown,21,213,8,0
+n967,勝 正孝,Keio University,Internal medicine,"St. Luke's International Hospital, Kawasaki City Kawasaki Hospital",88,85,4,0
+n972,勝木 保次,Tokyo Imperial University,physiology,Unknown,9,380,11,0
+n980,桂 重次,Niigata Medical University,Internal medicine,Unknown,85,169,4,0
+n988,加藤 金吉,Keio University,ophthalmology,Kawasaki City Kawasaki Hospital,22,119,6,0
+n1002,加藤 虎之助,Kyoto Imperial University,"Surgery, Social Activist",Unknown,49,229,1,0
+n1004,加藤 普佐次郎,Chiba Medical University,psychiatry,"Tokyo Prefectural Matsuzawa Hospital, Toyama Brain Hospital, Nakano Union Hospital",19,303,7,0
+n1022,金子 仁郎,Osaka Imperial University,psychiatry,"Affiliated Hospital, Kansai Rosai Hospital",33,67,7,0
+n1032,金田 弘,Kyoto Prefectural University of Medicine,Radiology,"Kyoto Daiichi Red Cross Hospital, Affiliated Hospital, Maizuru National Hospital",23,98,8,0
+n1039,金光 克己,Okayama Medical University,Welfare administration,Unknown,11,359,10,0
+n1040,金光 正次,Hokkaido Imperial University,hygiene,Izumibashi Charity Hospital,17,340,6,0
+n1046,鎌倉 正雄,Tokyo Imperial University,Forensic medicine,Unknown,4,381,14,0
+n1062,蒲生 逸夫,Osaka Imperial University,Pediatrics,Unknown,18,205,8,0
+n1077,川上 漸,Kyoto Imperial University,pathology,"Manchurian Unit 731, Kumamoto Prefectural Hospital",29,69,7,1
+n1108,川畑愛義,Taipei Imperial University,bacteriology,Unknown,26,269,0,0
+n1138,菊地真一郎,Nippon Medical University,surgery,Ginza Kikuchi Hospital,49,230,1,0
+n1168,北野政次,Tokyo Imperial University,bacteriology,"Manchuria 731st Unit, 13th Army",26,270,0,1
+n1201,木下福磨,Osaka Higher Medical School,Otorhinolaryngology,Unknown,14,131,3,0
+n1207,木原卓三郎,Kyoto Imperial University,anatomy,Unknown,15,382,5,0
+n1211,木村栄一,Tokyo Imperial University,Internal medicine,Unknown,85,170,4,0
+n1213,木村男也,Tokyo Imperial University,"pathology, neuropathology",National Hirosaki Hospital,25,325,7,0
+n1243,金原 節三,Unknown,Pediatrics,National Shizuoka Hospital,18,206,8,0
+n1256,楠 隆光,Tokyo Imperial University,urology,Unknown,11,151,8,0
+n1258,楠 信男,Tokyo Imperial University,Internal medicine,"Morioka Hospital, Affiliated Hospital",95,61,4,0
+n1269,工藤 達之,Keio University,surgery,Unknown,49,231,1,0
+n1277,国友 昇,Tokyo Imperial University,ophthalmology,Affiliated Itabashi Hospital,22,123,6,0
+n1316,倉繁 隆信,Tokyo Imperial University,Internal medicine,Unknown,85,171,4,0
+n1320,栗秋 要,Keijo Imperial University,pharmacology,Unknown,5,383,15,1
+n1339,黒川 正身,Keio University,bacteriology,National Kamegawa Hospital,26,271,0,0
+n1343,黒沢 良臣,Tokyo Imperial University,psychiatry,"Tokyo Prefectural Matsuzawa Hospital, National Kokufudai Hospital",19,304,7,0
+n1355,桑島 治三郎,Tohoku Imperial University,ophthalmology,"Sakata City Hospital, Sendai City Konan Hospital",21,310,6,0
+n1357,桑島 謙夫,Manchuria Medical University,bacteriology,Unknown,26,272,0,0
+n1372,小池正晃,Kyoto Imperial University,dermatology,"1st Division, Tokyo Daiichi Guard Hospital",15,125,8,0
+n1377,小泉親彦,Tokyo Imperial University,hygiene,"Army Medical College, Guards Division",31,17,6,0
+n1393,向野利夫,Kyushu Medical College,"ophthalmology, haiku poet",Yawata Steel Works Hospital,21,311,6,0
+n1395,河野 稔,Jikei Medical University,orthopedic surgery,Unknown,21,214,8,0
+n1415,小坂淳夫,Okayama Medical University,Internal medicine,Ii Medical Research Institute Hospital,85,172,4,0
+n1417,小酒井望,Tokyo Imperial University,clinical laboratory medicine,"Tokyo Daiichi National Hospital, Affiliated Hospital, Juntendo University Urayasu Hospital",17,49,7,0
+n1432,小谷 勉,Osaka Imperial University,orthopedic surgery,Osaka City University Hospital,21,215,8,0
+n1437,児玉俊夫,Tokyo Imperial University,orthopedic surgery,Unknown,21,216,8,0
+n1443,後藤七郎,Kyoto Imperial University,surgery,affiliated hospital,76,33,1,0
+n1450,後藤光治,Kyoto Imperial University,Otorhinolaryngology,"Affiliated Hospital, Kitano Hospital, Otsu Red Cross Hospital",29,1,3,0
+n1462,小林 隆,Tokyo Imperial University,Obstetrics and gynecology,Unknown,14,295,8,0
+n1466,小林龍男,Chiba Medical University,pharmacology,Unknown,5,384,15,0
+n1468,小林提樹,Keio University,"Pediatrics, Medical care for children with disabilities",Unknown,18,260,8,0
+n1481,五味二郎,Keio University,Internal medicine,Municipal Otaru Hospital,85,173,4,0
+n1489,古守豊甫,Tokyo Medical College,Internal medicine,"National Kofu Hospital, Komori Hospital",85,174,4,0
+n1498,小山善之,Tokyo Imperial University,Internal medicine,"National Tokyo Second Hospital, National Hospital, Japan Hospital",88,82,4,0
+n1518,犀川一夫,Jikei Medical University,leprosy medical,Unknown,4,385,16,0
+n1532,斎藤茂太,Showa Medical College,"Psychiatry, Essayist","Saito Hospital, Japan Psychiatric Hospital",19,284,7,0
+n1650,佐藤 猛夫,Tokyo Imperial University,Internal medicine,"Doaikai Memorial Hospital, Eighth Route Army Field General Hospital",85,175,4,0
+n1674,里見 三男,Tokyo Imperial University,microbiology,Unknown,2,386,0,0
+n1702,三内 多喜治,Unknown,oral surgery,Unknown,1,387,17,0
+n1707,塩沢 正俊,Tohoku Imperial University,surgery,National Sagamihara Hospital,49,232,1,0
+n1759,渋沢 喜守雄,Tokyo Imperial University,"surgery, poet","National Mito Hospital, National Oji Hospital",49,233,1,0
+n2000,高木憲次,Tokyo Imperial University,orthopedic surgery,Unknown,21,217,8,0
+n2056,高橋敏雄,Tokyo Imperial University,Welfare administration,Unknown,11,360,10,0
+n2063,高橋実,Kyoto Imperial University,ophthalmology,Unknown,21,312,6,0
+n2065,高橋義夫,Tokyo Imperial University,bacteriology,Unknown,26,273,0,0
+n2073,高松誠,Kyushu Medical College,hygiene,Unknown,17,341,6,0
+n2085,高山坦三,Hokkaido Imperial University,surgery,Noboribetsu Welfare Pension Hospital,49,234,1,0
+n2088,田川貞嗣,Hokkaido Imperial University,ophthalmology,Aomori Prefectural Hospital,21,313,6,0
+n2109,竹沢徳敬,Kyoto Prefectural University of Medicine,Otorhinolaryngology,"Mukden Red Cross Hospital, Horikawa Hospital, Kenkoukai South Hospital",14,132,3,0
+n2112,武重順夫,Kyushu Imperial University,anatomy,Unknown,15,388,5,0
+n2141,田崎一二,Keio University,"physiology, neurophysiology",Unknown,9,389,11,0
+n2147,田尻 敢,Chiba Medical University,leprosy medical,Zensei Hospital,4,390,16,0
+n2162,辰沼広吉,Keio University,mountaineering medicine,Unknown,1,391,1,0
+n2165,立野誠吾,Hokkaido Imperial University,Internal medicine,affiliated hospital,111,26,4,0
+n2167,田所一郎,Tokyo Imperial University,bacteriology,Unknown,26,274,0,0
+n2186,田辺 恒義,Hokkaido Imperial University,pharmacology,Unknown,5,392,15,0
+n2192,谷奥 喜平,Tokyo Imperial University,dermatology,Unknown,14,145,8,0
+n2193,谷川 久治,Chiba Medical University,hygiene,Unknown,17,342,6,0
+n2214,田宮 知耻夫,Tokyo Imperial University,"Internal medicine, Radiology",Unknown,93,56,4,0
+n2223,田村 雅太,Kyushu Imperial University,Internal medicine,Unknown,85,176,4,0
+n2231,千谷 七郎,Tokyo Imperial University,psychiatry,affiliated hospital,49,22,7,0
+n2250,辻 一郎,Tokyo Imperial University,urology,affiliated hospital,42,39,8,0
+n2252,辻 周介,Kyoto Imperial University,Internal medicine,Matsue Red Cross Hospital,85,177,4,0
+n2255,辻 泰邦,Kyoto Imperial University,parasitology,Sasebo City Hospital,7,393,12,0
+n2274,堤 辰郎,Nagasaki Medical University,Obstetrics and gynecology,affiliated hospital,43,50,8,0
+n2275,堤 直温,Tokyo Imperial University,orthopedic surgery,"National Tokyo Daiichi Hospital, Tokyo Metropolitan Toshima Hospital",25,97,8,0
+n2278,常岡 健二,Tokyo Imperial University,Internal medicine,"Kyoto Yoiyoin Affiliated Hospital, Tokyo Teishin Hospital",86,117,4,0
+n2300,寺師 義信,Kyoto Imperial University,aviation medicine,"Army Medical College, 1st Division",17,86,0,0
+n2310,照屋 寛善,Kyushu Medical College,"Internal medicine, public health",Unknown,88,65,4,0
+n2311,伝田 俊男,Keio University,pediatric surgery,National Tokyo Second Hospital,3,394,8,0
+n2312,土居 健郎,Tokyo Imperial University,psychiatry,St. Luke's International Hospital,21,99,7,0
+n2318,藤後 惣兵衛,Kyoto Imperial University,"internal medicine, haiku poet",Unknown,85,178,4,0
+n2326,當山 堅一,Taipei Medical College,Internal medicine,Unknown,85,179,4,0
+n2327,當山 堅次,Taipei Medical College,surgery,"Taipei Renji Hospital, Nago District Hospital",49,235,1,0
+n2336,徳田 源市,Kyoto Prefectural University of Medicine,Obstetrics and gynecology,Unknown,14,296,8,0
+n2357,富田 忠良,Keio University,orthopedic surgery,"National Shiobara Onsen Hospital, National Tokyo Second Hospital",24,109,8,0
+n2358,冨田 恒男,Keio University,physiology,Unknown,9,395,11,0
+n2365,外山 敏夫,Keio University,hygiene,Unknown,17,343,6,0
+n2366,豊川 行平,Tokyo Imperial University,hygiene,Unknown,17,344,6,0
+n2370,豊田 文一,Kanazawa Medical University,Otorhinolaryngology,"Mikuni Hospital, Industrial Association Hospital, Agricultural Cooperative Takaoka Hospital",14,133,3,0
+n2373,鳥飼 龍生,Tokyo Imperial University,Internal medicine,"Japan Red Cross Wakayama Branch Hospital, Tohoku Kosai Hospital",85,180,4,0
+n2386,内藤 行雄,Nagasaki Medical University,orthopedic surgery,"Wakayama Red Cross Hospital, Nagasaki Atomic Bomb Hospital",21,218,8,0
+n2388,内藤 良一,Kyoto Imperial University,hematology,"Manchurian Unit 731, Army Medical College",18,91,0,1
+n2389,名尾 良憲,Chiba Medical University,Internal medicine,Tokyo Metropolitan Toshima Hospital,86,111,4,0
+n2392,永井 清保,Osaka Imperial University,Internal medicine,Unknown,85,181,4,0
+n2395,永井 隆,Nagasaki Medical University,"Radiology, Atomic Bomb Medicine",Unknown,8,396,8,0
+n2406,中尾 喜久,Tokyo Imperial University,Internal medicine,Unknown,85,182,4,0
+n2408,中尾 健,Jikei Medical University,pharmacology,Unknown,5,397,15,0
+n2413,中尾 良一,Iwate Medical College,Internal medicine,Yamanashi Prefectural Hospital,85,183,4,0
+n2420,中川 秀三,Hokkaido Imperial University,psychiatry,Unknown,19,285,7,0
+n2425,中黒 秀外之,Hokkaido Imperial University,bacteriology,"Manchurian Unit 731, Southern Army Epidemic Prevention and Water Supply Department, Japan Self-Defense Force Sapporo District Hospital",31,42,0,1
+n2440,長瀬 又男,Keio University,"Pediatrics, Medical care for children with disabilities",Unknown,18,261,8,0
+n2443,永田 正夫,Nihon University College of Medicine,urology,Affiliated Itabashi Hospital,12,124,8,0
+n2448,永富 勲,Kyushu Imperial University,surgery,Saga Kishima Coal Mine Hospital,49,236,1,0
+n2452,中野 嘉一,Keio University,"psychiatry, poet","Musashino Hospital, Iwaya Hospital, Miyagawa Hospital",19,286,7,0
+n2457,長野 準,Kyushu Imperial University,Internal medicine,"National Sanatorium Yagatahara Hospital, National Sanatorium Minami-Fukuoka Hospital",85,184,4,0
+n2460,中野 操,Kyoto Prefectural University of Medicine,"Medical history, dermatology",Japan Red Cross Osaka Branch Hospital,20,84,8,0
+n2462,中野 由巳,Taipei Medical College,anatomy,Unknown,15,398,5,0
+n2464,長花 操,Keijo Imperial University,parasitology,Unknown,7,399,12,1
+n2472,中原 龍之助,Tokyo Imperial University,Welfare administration,Unknown,11,361,10,0
+n2480,中村 兼次,Tokyo Imperial University,Pediatrics,Kanto Teishin Hospital,18,207,8,0
+n2493,中村 平蔵,Niigata Medical University,oral surgery,Wa University School of Dentistry Hospital,1,400,17,0
+n2495,中村 昌弘,Kyushu Medical College,bacteriology,Unknown,26,275,0,0
+n2502,中山 健太郎,Tokyo Imperial University,Pediatrics,"Mitsui Kosei Hospital, Self-Defense Forces Central Hospital, Omori Hospital",20,122,8,0
+n2503,中山 恒明,Chiba Medical University,surgery,Unknown,49,237,1,0
+n2521,梛野 厳,Tokyo Imperial University,Internal medicine,"Army Medical College, Xinjingweishu Hospital, Beijing Military Hospital",98,10,4,0
+n2527,名越 好古,Jikei Medical University,Otorhinolaryngology,Unknown,14,134,3,0
+n2529,那須 毅,Okayama Medical University,pathology,Unknown,25,326,7,0
+n2541,縄田 千郎,Kyushu Imperial University,Radiology,Unknown,8,401,8,0
+n2544,新島 迪夫,Chiba Medical University,anatomy,Unknown,15,402,5,0
+n2547,新津 泰孝,Tohoku Imperial University,Pediatrics,Unknown,18,208,8,0
+n2548,新見 嘉兵衛,"Tokyo Higher Dental School, Niigata Medical University",anatomy,Unknown,15,403,5,0
+n2551,二階堂 昇,Tohoku Imperial University,Internal medicine,Unknown,85,185,4,0
+n2552,仁木 イワノ,Japan Red Cross Kagawa Branch Hospital Relief Nurse Training School,nurse,"National Tokushima Hospital, Tokushima University Hospital",1,404,18,0
+n2561,西尾 篤人,Tokyo Imperial University,orthopedic surgery,"Affiliated Hospital, Kyushu Rosai Hospital",35,80,8,0
+n2568,西川 光夫,Tokyo Imperial University,Internal medicine,"Affiliated Hospital, Sumitomo Hospital",95,62,4,0
+n2580,西野 陸夫,Hokkaido Imperial University,"Welfare administration, public health science",Unknown,14,142,10,0
+n2583,西部 ベン,Japan Red Cross Kagawa Branch Hospital Relief Nurse Training School,nurse,"Tokushima Municipal Hospital, Tokushima University Hospital",1,405,18,0
+n2589,西村 敏雄,Kyoto Imperial University,Obstetrics and gynecology,National Sabae Hospital,14,297,8,0
+n2590,西村 秀雄,Kyoto Imperial University,"anatomy, embryology",Unknown,16,143,5,0
+n2597,西山 保一,Keio University,pathology,Unknown,25,327,7,0
+n2610,根井 外喜男,Hokkaido Imperial University,bacteriology,Unknown,26,276,0,0
+n2614,野口 秋人,Tohoku Imperial University,"surgery, mountaineer",Noguchi Hospital,49,256,1,0
+n2620,野口 義圀,Tokyo Imperial University,"Dermatology, Allergology, Immunology",affiliated hospital,46,16,8,0
+n2622,野坂 保次,Kumamoto Medical University,Otorhinolaryngology,Unknown,14,135,3,0
+n2623,野崎 秀英,Niigata Medical University,Radiology,affiliated hospital,39,66,8,0
+n2629,野田 金次郎,Tokyo Imperial University,Forensic medicine,Unknown,4,406,14,0
+n2631,野嶽 幸雄,Kyushu Imperial University,Obstetrics and gynecology,Unknown,14,298,8,0
+n2650,萩野 昇,Kanazawa Medical University,Internal medicine,Hagino Hospital,85,186,4,0
+n2657,萩原 義雄,Kyoto Imperial University,surgery,Unknown,49,238,1,0
+n2663,橋爪 一男,Hokkaido Imperial University,surgery,"Sakura National Hospital, National Sanatorium Toshin Hospital",49,239,1,0
+n2667,橋本 勇,Kyoto Imperial University,surgery,Unknown,49,240,1,0
+n2669,橋本 清,Okayama Medical University,Obstetrics and gynecology,affiliated hospital,43,51,8,0
+n2689,長谷川 敏雄,Tokyo Imperial University,Obstetrics and gynecology,Japan Red Cross Central Hospital,14,299,8,0
+n2704,羽田野 茂,Tokyo Imperial University,surgery,Mitsui Memorial Hospital,49,241,1,0
+n2705,簇野 倫,Keio University,dermatology,"National Saitama Hospital, National Tokyo Second Hospital",17,107,8,0
+n2715,服部 絢一,Kyushu Imperial University,Internal medicine,affiliated hospital,111,27,4,0
+n2717,服部敏良,Nagoya Medical University,"Internal medicine, Medical history",Yamashita Hospital,88,88,4,0
+n2721,花岡堅而,Niigata Medical University,Obstetrics and gynecology,Yoshida Hospital,14,300,8,0
+n2729,馬場省二,Tokyo Imperial University,leprosy medical,Unknown,4,407,16,0
+n2731,馬場為義,Osaka Medical University,pathology,Unknown,25,328,7,0
+n2733,浜口栄祐,Tokyo Imperial University,surgery,National Tokyo Daiichi Hospital,53,45,1,0
+n2736,浜田 到,Okayama Medical University,"internal medicine, poet",Saiseikai Hospital,85,187,4,0
+n2748,早石 虎雄,Unknown,psychiatry,Hayaishi Hospital,19,287,7,0
+n2751,早川 清,Tokyo Imperial University,hygiene,"Manchurian Unit 731, Southern Army Epidemic Prevention and Water Supply Department, Army Medical College",34,3,6,1
+n2754,林 一郎,Kyoto Imperial University,pathology,Manchurian Unit 731,29,70,7,1
+n2765,林 道倫,Niigata Medical University,Obstetrics and gynecology,Dorin Psychiatric and Neurological Hospital,14,301,8,0
+n2783,原 隼人,Tokyo Imperial University,Internal medicine,"Tsuru Naval Base Military Medical Director and Hospital, Steelworks Medical Director and Hospital, Maizuru Naval Base",85,188,4,0
+n2786,原田 彰,Tokyo Imperial University,urology,Unknown,11,152,8,0
+n2787,原田 永之助,Tokyo Imperial University,ophthalmology,Unknown,21,314,6,0
+n2792,原田 東岷,Okayama Medical University,orthopedic surgery,Harada Orthopedic Hospital,21,219,8,0
+n2794,原田 豊,Kumamoto Medical University,Pediatrics,Unknown,18,209,8,0
+n2797,原田 宣祐,University East Campus,Internal medicine,Unknown,85,189,4,0
+n2803,半田 順俊,Kanazawa Medical University,"Anatomy, Human Genetics",Unknown,15,408,5,0
+n2806,日置 紘士郎,Tokyo Imperial University,orthopedic surgery,Unknown,21,220,8,0
+n2809,日影董,Tokyo Imperial University,surgery,This medical group Osaka branch hospital,49,242,1,0
+n2816,樋口 謙太郎,Kyushu Imperial University,dermatology,affiliated hospital,44,54,8,0
+n2826,日野 志郎,Tokyo Imperial University,Internal medicine,"Tokyo Teishin Hospital, Yokohama Teishin Hospital",86,118,4,0
+n2829,日比野 進,Aichi Medical University,Internal medicine,National Nagoya Hospital,85,190,4,0
+n2830,兵頭 周吉,Tokyo Imperial University,surgery,"1st Army, Mukden Military Hospital, Nanjing Military Hospital",49,243,1,0
+n2834,平井 孝,Nagasaki Medical University,surgery,National Omura Hospital,49,244,1,0
+n2842,平出順吉郎,Tokyo Imperial University,biochemistry,Unknown,3,409,13,0
+n2843,平賀 稔,Tokyo Imperial University,"Dermatology, Urology","Army Medical College, St. Luke's International Hospital",39,13,8,0
+n2846,平木 潔,Okayama Medical University,Internal medicine,affiliated hospital,111,28,4,0
+n2863,広明 竹雄,Tokyo Higher Dental School,"bacteriology, clinical laboratory","Army Medical College, Tokyo National Daiichi Hospital",42,2,0,0
+n2891,福島 孝吉,Tokyo Imperial University,Internal medicine,"Mitsui Kosei Hospital, Affiliated Hospital",97,40,4,0
+n2899,福田 精,Kyoto Imperial University,Otorhinolaryngology,Unknown,14,136,3,0
+n2913,浮池 正基,Kyushu Medical College,"Internal medicine, pediatrics, politician",Minamata Hospital,101,71,4,0
+n2914,富士 貞吉,Kyoto Imperial University,hygiene,Unknown,17,345,6,0
+n2927,藤生 太郎,Kyoto Imperial University,Obstetrics and gynecology,"Affiliated Hospital, National Shimonoseki Hospital",29,48,8,0
+n2948,藤浪 得二,Kyoto Imperial University,dermatology,Unknown,14,146,8,0
+n2951,藤野 恒三郎,Osaka Medical University,bacteriology,Unknown,26,277,0,0
+n2957,藤巻 茂夫,Niigata Medical University,pathology,Unknown,25,329,7,1
+n2962,藤本 憲司,Tokyo Imperial University,orthopedic surgery,affiliated hospital,49,58,8,0
+n2965,藤森 速水,Kyoto Imperial University,Obstetrics and gynecology,affiliated hospital,43,52,8,0
+n2971,藤原 慶一郎,Tohoku Imperial University,"Internal medicine, pediatrics, medical politician",Unknown,101,72,4,0
+n3027,細川 修治,Osaka Higher Medical College,pathology,Unknown,25,330,7,0
+n3030,細川 一,Tokyo Imperial University,Internal medicine,"Basic Fertilizer Agochi Hospital, Minamata Factory Hospital",85,191,4,0
+n3036,細見 憲,Kyushu Imperial University,surgery,"Army Medical College, Southern Military First Hospital",62,35,1,0
+n3038,細谷 英吉,Keio University,pharmacology,Unknown,5,410,15,0
+n3039,細谷 省吾,Tokyo Imperial University,bacteriology,Unknown,26,278,0,0
+n3052,堀井 三津夫,Kyoto Imperial University,tuberculosis pathology,union hospital,1,411,2,0
+n3055,堀内 一弥,Osaka Imperial University,hygiene,Unknown,17,346,6,0
+n3057,堀内 利国,Kyoto Imperial University,army doctor,Army Medical College,15,258,0,0
+n3070,本庄 一夫,Kyoto Imperial University,surgery,Unknown,49,245,1,0
+n3097,前田 和三郎,Kyoto Imperial University,surgery,Tachikawa Hospital,49,246,1,0
+n3102,牧内 正一,Osaka Medical University,ophthalmology,affiliated hospital,51,6,6,0
+n3129,増田 正典,Kyushu Imperial University,Internal medicine,Unknown,85,192,4,0
+n3133,桝屋 冨一,Kyushu Imperial University,Internal medicine,Unknown,85,193,4,0
+n3161,松崎 義周,Keio University,parasitology,Unknown,7,412,12,0
+n3180,松村 忠樹,Kyoto Imperial University,Pediatrics,affiliated hospital,46,74,8,0
+n3182,松村 義寛,Tokyo Imperial University,"Biochemistry, Nutrition",Unknown,5,46,13,0
+n3195,松本 稔,Tokyo Imperial University,virology,children's hospital,4,413,0,0
+n3205,真鍋 嘉一郎,Tokyo Imperial University,Internal medicine,Unknown,85,194,4,0
+n3221,丸山 博,Osaka Imperial University,hygiene,Unknown,17,347,6,0
+n3235,三浦 豊彦,Nippon Medical University,hygiene,Unknown,17,348,6,0
+n3243,三上 芳雄,Kumamoto Medical University,Forensic medicine,Unknown,4,414,14,0
+n3247,三木 栄,Kyushu Imperial University,"Internal medicine, Medical history",Unknown,88,89,4,0
+n3249,三木 良英,Tokyo Imperial University,Internal medicine,Imperial Guard Division,86,108,4,0
+n3259,水上 哲次,Kanazawa Medical University,surgery,"Tuberculosis Research Institute Hospital, Kanazawa Red Cross Hospital",49,247,1,0
+n3266,水谷 豊,Nagoya Medical University,ophthalmology,Unknown,21,315,6,0
+n3271,水野 宏,Nagoya Medical University,public health,Unknown,3,415,10,0
+n3275,水原 舜爾,Okayama Medical University,biochemistry,Unknown,3,416,13,0
+n3278,水町 四郎,Tokyo Imperial University,orthopedic surgery,Kanto Rosai Hospital,22,128,8,0
+n3281,御園生 圭輔,Tokyo Imperial University,Radiology,National Tokyo Daiichi Hospital,12,102,8,0
+n3291,三井 但夫,Keio University,anatomy,Unknown,15,417,5,1
+n3293,三井 幸彦,Tokyo Imperial University,ophthalmology,Unknown,21,316,6,0
+n3296,満田 久敏,Osaka Imperial University,psychiatry,Unknown,19,288,7,0
+n3303,南 熊太,Kumamoto Medical University,ophthalmology,Unknown,21,317,6,0
+n3321,宮内 義之介,Chiba Medical University,Forensic medicine,Unknown,4,418,14,0
+n3325,宮川 正,Tokyo Imperial University,Radiology,Unknown,8,419,8,0
+n3327,宮川 正澄,Nagoya Medical University,pathology,Unknown,25,331,7,0
+n3335,三宅 清雄,Kyoto Prefectural University of Medicine,pathology,Unknown,25,332,7,0
+n3349,宮崎 寛明,Tokyo Imperial University,dermatology,Unknown,14,147,8,0
+n3358,宮地 韶太郎,Tohoku Imperial University,Radiology,Harbin City Hospital,8,420,8,0
+n3364,宮田 重雄,Keio University,"Dermatology, Urology, Western painter","Tanashi Hospital, National Yokohama Hospital",22,126,8,0
+n3368,宮本 璋,Osaka Imperial University,Internal medicine,"Ministry of Communications Kobe Teishin Hospital, Kobe Teishin Hospital",85,195,4,0
+n3379,三輪 清三,Chiba Medical University,Internal medicine,"Affiliated Hospital, Kimitsu Central Hospital",95,63,4,0
+n3383,向笠 広次,Kyushu Imperial University,psychiatry,Unknown,19,289,7,0
+n3390,村形 友治,Hokkaido Imperial University,Ground Self-Defense Force medical officer,Japan Self-Defense Force Sapporo District Hospital,2,95,0,0
+n3393,村上 勝美,Tokyo Imperial University,Pediatrics,affiliated hospital,46,75,8,0
+n3403,村上 徳治,Kyoto Imperial University,surgery,"Army Medical College, Osaka Army Hospital, Shinkyo Daiichi Army Hospital",62,36,1,0
+n3421,室橋 豊穂,Tokyo Imperial University,"Pediatrics, Bacteriology",Unknown,44,8,0,0
+n3432,本島 一郎,Tokyo Imperial University,orthopedic surgery,Unknown,21,221,8,0
+n3438,桃井 直幹,Tokyo Imperial University,Internal medicine,Army Medical College,98,11,4,0
+n3447,森 富,Tohoku Imperial University,anatomy,Unknown,15,421,5,0
+n3450,森 優,Kyushu Imperial University,anatomy,Unknown,15,422,5,0
+n3457,森崎 半治,Nippon Medical University,"Dermatology, Urology",Karasuyama Hospital,22,127,8,0
+n3467,森村 茂樹,Tokyo Imperial University,"medical education, psychiatry",Unknown,21,83,7,0
+n3468,森本 潔,Kyoto Imperial University,Otorhinolaryngology,Nishinomiya Municipal Hospital,14,137,3,0
+n3472,森安 信雄,Kyoto Prefectural University of Medicine,surgery,Unknown,49,248,1,0
+n3475,諸富 武文,Nippon Medical University,"Orthopedics, Plastic surgery, Rheumatology",Unknown,21,222,8,0
+n3477,矢追 秀武,Tokyo Imperial University,"Bacteriology, Virology",Unknown,30,44,0,0
+n3478,矢数 道明,Tokyo Medical College,"Chinese herbalist, medical history",Unknown,6,302,4,0
+n3488,八木沢 行正,Unknown,bacteriology,Unknown,26,279,0,0
+n3493,八代 周二,Tokyo Imperial University,surgery,Unknown,49,249,1,0
+n3496,安井 洋,Unknown,psychiatry,Imperial Guard Division,20,121,7,0
+n3498,安澄 権八郎,Osaka Medical University,anatomy,Unknown,15,423,5,0
+n3499,保田 岩夫,Kyoto Prefectural University of Medicine,orthopedic surgery,Kyoto Second Red Cross Hospital,21,223,8,0
+n3501,安田 竜夫,Osaka Medical University,pathology,Unknown,25,333,7,0
+n3508,柳浦 才三,Tokyo Medical University,pharmacology,Unknown,5,424,15,0
+n3516,柳田 秀一,Okayama Medical University,"Internal medicine, pediatrics, politician",Unknown,101,73,4,0
+n3555,山添 三郎,Niigata Medical University,biochemistry,Unknown,3,425,13,0
+n3559,山田 憲吾,Kyoto Imperial University,orthopedic surgery,affiliated hospital,49,59,8,0
+n3571,山田 守英,Hokkaido Imperial University,bacteriology,Unknown,26,280,0,0
+n3575,山中 太木,Osaka Higher Medical College,"Bacteriology, Medical history",Unknown,32,41,0,1
+n3579,山内 峻呉,Niigata Medical University,Forensic medicine,Unknown,4,426,14,0
+n3583,山本 巖,Keio University,Anesthesiology,Unknown,4,352,1,0
+n3602,湯浅 恭一,Jikei Medical University,"internal medicine, poet",Jusendo General Hospital,85,196,4,0
+n3627,横山 正松,Niigata Medical University,physiology,Unknown,9,427,11,1
+n3647,吉田 邦男,Osaka Imperial University,Pediatrics,affiliated hospital,46,76,8,0
+n3650,吉田 貞雄,Higher Normal School,parasitology,Unknown,7,428,12,0
+n3657,吉田 章信,Kyushu Imperial University,"Physiology, Physical education",Unknown,9,429,11,0
+n3669,吉村 不二夫,Jikei Medical University,anatomy,Unknown,15,430,5,0
+n3691,六反田 藤吉,Kumamoto Medical University,"Microbiology, Virology",Unknown,6,105,0,0
+n3695,若月 俊一,Tokyo Imperial University,"community medicine, surgery",Prefectural Health and Welfare Federation Saku General Hospital,50,116,1,0
+n3696,若林 修,Tokyo Imperial University,surgery,Unknown,49,250,1,0
+n3701,脇坂 順一,Kyushu Imperial University,surgery,Unknown,49,251,1,0
+n3711,和田 豊治,Hokkaido Imperial University,psychiatry,Unknown,19,290,7,0
+n3713,和田 博夫,Kyushu Imperial University,"Orthopedics, Medical care for people with disabilities","National Tokyo Daiichi Hospital, Minamitama Orthopedic Hospital",24,101,8,0
+n3716,和田 正久,Osaka Imperial University,Internal medicine,Unknown,85,197,4,0
+n3723,渡辺 甲一,Tokyo Imperial University,Internal medicine,Army Medical College,98,12,4,0
+n3725,渡辺 五郎,Showa Medical College,pathology,Unknown,25,334,7,0
+n3731,渡辺 昇平,Nagoya Imperial University,surgery,"Nagoya National Hospital, Social Insurance Chukyo Hospital",49,252,1,0
+n3732,渡辺 漸,Tokyo Imperial University,pathology,Unknown,25,335,7,0
+n3733,渡辺 豊輔,Keio University,pathology,Tokyo Metropolitan Komagome Hospital,26,110,7,0
+n3735,渡辺 真言,Keio University,"Internal medicine, medical politician",Unknown,85,198,4,0
+n3737,渡辺 嶺男,Keijo Imperial University,hygiene,Unknown,17,349,6,0
+n3741,綿貫 重雄,Chiba Medical University,surgery,National Narashino Hospital,49,253,1,0
+n3742,綿貫 哲,Tokyo Imperial University,"Surgery, Anesthesiology",Unknown,52,114,1,0
+n3767,天野道之助,Keio University,anesthesiology,Unknown,4,353,1,0
+n3807,石川浩一,Tokyo Imperial University,surgery,Kanto Rosai Hospital,50,120,1,0
+n3825,磯部美知,Jikei Medical College,parasitology,"National Charity Hospital, Taiwan Governor-General Hospital",7,431,12,0
+n3838,伊藤司,Fukushima Medical University,anatomy,Unknown,15,432,5,0
+n3844,稲田龍一,Tokyo Imperial University,Internal medicine,"Tokyo Metropolitan Hiroo Hospital, Tokyo Metropolitan Bokuto Hospital",85,199,4,0
+n3847,犬伏康夫,Kyoto Imperial University,Pharmacy,Unknown,4,433,9,0
+n3863,今村昌耕,Hokkaido Imperial University,tuberculosis pathology,Unknown,1,434,2,0
+n3870,岩月賢一,Tokyo Imperial University,Surgery/Anesthesiology,Unknown,52,115,1,0
+n3878,植松稔,Keio University,hygiene,Unknown,17,350,6,0
+n3893,台弘,Tokyo Imperial University,psychiatry,"Matsuzawa Hospital, Affiliated Hospital",33,68,7,0
+n3904,海老原勉,Showa Medical College,Pediatrics,Unknown,18,210,8,0
+n3923,大西基四夫,Tohoku Imperial University,leprosy medical,Unknown,4,435,16,0
+n3930,大藤重夫,Kyoto Imperial University,dermatology,Unknown,14,148,8,0
+n3953,奥田六郎,Kyoto Imperial University,Pediatrics,affiliated hospital,46,77,8,0
+n3961,小田徹也,Kyushu Imperial University,"Surgery, Nuclear Free Activist",Unknown,49,254,1,0
+n3968,小原喜隆,Tokyo Imperial University,Otorhinolaryngology,"Kanto Telecommunications Hospital, Manchuria Dalian Hospital",14,138,3,0
+n3971,恩地豊,Kyoto Imperial University,Otorhinolaryngology,Unknown,14,139,3,0
+n3972,貝塚侊,Kyoto Prefectural University of Medicine,Otorhinolaryngology,Otsu Red Cross Hospital,14,436,3,1
+n3996,加藤篤二,Kyoto Imperial University,urology,Unknown,11,153,8,0
+n4005,釜洞醇太郎,Osaka Imperial University,virology,Unknown,4,437,0,0
+n4021,川野正七,Nagasaki Medical University,Internal medicine,Unknown,85,200,4,0
+n4046,木村忠司,Kyoto Imperial University,surgery,affiliated hospital,76,34,1,0
+n4086,小竹英夫,Hokkaido Imperial University,"Internal medicine, Medical history",National Asahikawa Hospital,88,90,4,0
+n4095,小張一峰,Chiba Medical University,infectious disease,"Tokyo Metropolitan Komagome Hospital, Affiliated Hospital",16,100,7,0
+n4105,斎藤忠夫,Kyoto Imperial University,dermatology,Unknown,14,149,8,0
+n4140,佐藤靖雄,Tokyo Imperial University,Otorhinolaryngology,Unknown,14,140,3,0
+n4146,塩川優一,Tokyo Imperial University,"Internal medicine (collagen disease, rheumatology)",Unknown,85,201,4,0
+n4159,柴田清人,Kyoto Imperial University,surgery,"Affiliated Hospital, Tajimi Municipal Hospital",64,9,1,0
+n4174,新福尚武,Kyushu Imperial University,psychiatry,Unknown,19,291,7,0
+n4201,関亮,Tokyo Medical College,ophthalmology,Koshigaya Hospital,21,318,6,0
+n4207,曾根二郎,Tokyo Imperial University,Pharmacy,Unknown,4,438,9,0
+n4217,高島文一,Kyoto Imperial University,"Internal medicine, Oriental medicine",Unknown,86,47,4,0
+n4233,高橋博元,Tokyo Imperial University,urology,Unknown,11,154,8,0
+n4237,高部益男,Tokyo Imperial University,Welfare administration,Unknown,11,362,10,0
+n4239,高安正夫,Kyoto Imperial University,Internal medicine,National Kyoto Hospital,85,202,4,0
+n4242,田口胤三,Tokyo Imperial University,Pharmacy,Unknown,4,439,9,0
+n4291,柘植秀臣,Tohoku Imperial University,physiology,Unknown,9,440,11,0
+n4318,徳臣晴比古,Kumamoto Medical University,Internal medicine,"Affiliated Hospital, Kumamoto Rosai Hospital",95,64,4,0
+n4334,永井健児,Kyoto Prefectural University of Medicine,leprosy medical,Unknown,4,441,16,0
+n4339,永江大助,Tokyo Imperial University,surgery,"Army Medical College, Hiroshima Army Hospital",62,37,1,0
+n4390,西山敬三,Fukuoka Prefectural Medical and Dental College,dental,Hiroshima Red Cross Hospital,1,442,8,0
+n4397,野口志郎,Showa Medical College,surgery,Noguchi Hospital,49,257,1,0
+n4419,濱島義博,Kyoto Prefectural University of Medicine,"pathology, immunology",Unknown,27,29,7,0
+n4425,林滋生,Yokohama City University,parasitology,Unknown,7,443,12,0
+n4430,早田義博,Tokyo Medical College,"Surgery, Mountaineering Medicine",Unknown,50,94,1,0
+n4431,原学郎,Tokyo Dental Specialist,conservative dentistry,affiliated hospital,31,155,8,0
+n4439,東田敏夫,Kyoto Imperial University,hygiene,Unknown,17,351,6,0
+n4450,廣戸幾一郎,Kyoto Imperial University,Otorhinolaryngology,Kokura Memorial Hospital,14,141,3,0
+n4475,伏原春男,Kyoto Prefectural University of Medicine,Internal medicine,Public Nantan Hospital,85,203,4,0
+n4549,三島四郎,Okayama Medical University,surgery,Okayama City Hospital,49,255,1,0
+n4571,宮坂 忠夫,Hiroshima Medical College,public health,Unknown,3,444,10,0
+n4588,村田 茂助,Chiba Medical University,bacteriology,Unknown,26,281,0,1
+n4603,森川 和雄,Hokkaido Imperial University,pathology,Unknown,25,336,7,0
+n4640,山田 尚達,Tokyo Imperial University,Pediatrics,Unknown,18,211,8,0
+n4648,湯川 永洋,Osaka Imperial University,Internal medicine,"Osaka Gastrointestinal Hospital, Yukawa Gastrointestinal Hospital",85,204,4,0
+n4681,渡部 智俱人,Lushun Medical College,"Dermatology, Urology, Obstetrics and Gynecology",Unknown,36,81,8,0

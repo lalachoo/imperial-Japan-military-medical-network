@@ -59,7 +59,8 @@ def get_grad_year(text):
     return None
 def normalize_school_ja(s):
     if not s or s in ("-", "Unknown"): return "Unknown"
-    # 졸업연도 등 괄호 꼬리표 제거 (예: '岡山医科大学 (昭和9年卒)' -> '岡山医科大学')
+    # Strip parenthetical tags such as the graduation year
+    # (e.g. '岡山医科大学 (昭和9年卒)' -> '岡山医科大学')
     s = re.sub(r"\s*[\(（].*?[\)）]\s*", "", str(s)).strip()
     if not s: return "Unknown"
     s_clean = s.replace(" ", "").replace("　", "")
@@ -72,8 +73,9 @@ def normalize_school_ja(s):
     if re.search(r"名古屋帝|名大|名古屋大", s_clean): return "名古屋帝国大学"
     if re.search(r"慶應|慶応", s_clean): return "慶應義塾大学"
     if re.search(r"千葉", s_clean): return "千葉医科大学"
-    if s_clean == "帝国대" or s_clean == "帝国大学": return "東京帝国大学"
-    # 표기 변이(약칭·이표기) 통합 — 같은 학교가 다른 라벨로 쪼개지는 것 방지
+    if s_clean == "帝国大学": return "東京帝国大学"
+    # Merge orthographic variants (abbreviations, alternative renderings) so that one
+    # school does not split into several labels. Released as data/school_alias_map.csv.
     _aliases = {
         "慈恵会医科大学": "慈恵医科大学", "慈恵医大": "慈恵医科大学",
         "台北医科専門学校": "台北医学専門学校",
@@ -84,10 +86,11 @@ def normalize_school_ja(s):
     }
     return _aliases.get(s_clean, s)
 def normalize_major(s):
-    """전공명 정규화: '陸軍軍医(細菌学)'→'細菌学', '内科(結核病学)'→'内科' 등 표기 변이 통합.
-    - '陸軍軍医/海軍軍医(X)' 형태는 괄호 안 전공 X를 사용(군의 접두는 전공이 아님).
-    - 그 외 'Y(세부)' 형태는 괄호 앞 대분류 Y로 통합.
-    - 콤마/점 구분 다중 전공은 각각 정규화."""
+    """Normalise Japanese specialty strings before translation.
+    - '陸軍軍医(X)' / '海軍軍医(X)': keep the parenthetical specialty X; the military
+      prefix is a rank, not a specialty.
+    - Otherwise 'Y(detail)' folds into the parent category Y.
+    - Comma- or interpunct-separated multiple specialties are normalised individually."""
     if not s or str(s).strip() in ("-", "Unknown", ""): return s
     parts = re.split(r'[,、]', str(s)); out = []
     for p in parts:
@@ -102,9 +105,10 @@ def normalize_major(s):
     seen = list(dict.fromkeys(out))
     return ", ".join(seen) if seen else s
 def extract_real_units(text):
-    """근무지/소속에서 '실제 배속 부대'만 추출·정규화한다.
-    직함(陸軍軍医)·계급(軍医少尉)·일반 서술(軍務·兵役·中国戦線 등)은 부대가 아니므로 제외.
-    표기 변이는 통합: 731=관동군방역급수부, 軍医学校=陸軍軍医学校 등."""
+    """Extract and normalise the actual assigned unit from the workplace field.
+    Titles (陸軍軍医), ranks (軍医少尉) and general descriptions (軍務, 兵役, 中国戦線)
+    are not units and are excluded. Orthographic variants are merged, e.g.
+    731 -> 関東軍防疫給水部, 軍医学校 -> 陸軍軍医学校."""
     t = str(text); out = []
     def add(x):
         if x and x not in out: out.append(x)
@@ -136,6 +140,45 @@ GROUP_COLORS = {
     "civilian": "#555555"
 }
 FIELD_ADJ_COLOR = "#D9923E"  # Field-adjacent (indirect candidate) color
+# -- Specialty normalisation (English side) ----------------------------------
+# Mirrors the treatment already applied to school names via school_alias_map.
+# It resolves three defects at once: machine translation returning the same
+# specialty with different capitalisation, parenthetical detail being split on
+# the comma, and non-specialty attributes generating specialty edges.
+# The rules are released as data/major_alias_map.csv.
+MAJOR_NON_SPECIALTY = {
+    # Not medical specialties: kept as node attributes, excluded from edge generation
+    'poet', 'haiku poet', 'essayist', 'western painter', 'buddhist', 'mountaineer',
+    'organic farmer', 'businessman', 'social entrepreneur', 'politician',
+    'medical politician', 'social activist', 'nuclear free activist', 'medical critic',
+    'archeology', 'physical education',
+    # Occupational labels rather than specialties: sharing these is not "same specialty"
+    'doctor', 'army doctor', 'nurse',
+}
+MAJOR_ALIAS = {
+    'orthopedics': 'orthopedic surgery',
+    'public health science': 'public health',
+    'medical school education': 'medical education',
+    'allergy': 'allergology',
+    'clinical laboratory': 'laboratory medicine',
+    'clinical laboratory medicine': 'laboratory medicine',
+}
+def major_list_en(text):
+    """Specialties used for edge generation: strip parenthetical detail, split,
+    lower-case, apply aliases, drop non-specialty attributes."""
+    if not text or str(text).strip().lower() in ("unknown", "-", ""): return []
+    t = re.sub(r'\s*[\(（][^)）]*[\)）]', '', str(text))   # drop parenthetical blocks before splitting
+    t = re.sub(r'[\(（][^)）]*$', '', t)                   # drop an unclosed trailing parenthesis
+    out = []
+    # Separators for multiple specialties: comma family plus slash and semicolon
+    for p in re.split(r'[,、・/;]', t):
+        p = p.strip().strip(')）').strip().lower()
+        if not p or p in ("unknown", "-"): continue
+        p = MAJOR_ALIAS.get(p, p)
+        if p in MAJOR_NON_SPECIALTY: continue
+        out.append(p)
+    return list(dict.fromkeys(out))
+
 def is_field_adjacent(major_ja, post, is_war):
     """Civilian (no military service) whose specialty/affiliation is military-medicine-adjacent (bacteriology, epidemic prevention, hygiene, colonial medicine)."""
     if is_war: return False
@@ -197,6 +240,13 @@ def main():
     raw_dict = {}
     for file in xlsx_files:
         norm_file = unicodedata.normalize('NFC', file)
+        # NOTE ON THE KOREAN STRINGS BELOW. The source spreadsheets were compiled by the
+        # author with a mixture of Korean and Japanese column headers, and the branch-of-
+        # service field likewise records values in either language. The Korean literals in
+        # this block and in the regular expressions that follow are therefore data keys,
+        # not commentary: they must match the spreadsheets exactly and cannot be translated
+        # without breaking ingestion. Every comment and console message in this file is in
+        # English.
         is_verified_file = "검증본" in norm_file or "군의학" in norm_file
         try:
             df = pd.read_excel(file).fillna("")
@@ -316,7 +366,8 @@ def main():
             "rank": r["rank"],
             "life": r["life"],
             "group": r["group"],
-            # 시계열 정제(진단③): 1925년 이후 출생자는 종전(1945) 시 20세 이하로 전시 군의가 불가하므로 분석 모집단에서 제외
+            # Temporal filter (diagnostic 3): anyone born after 1925 was 20 or younger at
+            # the 1945 surrender and cannot have served as a wartime physician; excluded.
             "is_war": (r["is_war"] and not (r.get("birth") is not None and r["birth"] >= 1925)),
             "unit731": r["unit731"],
             "purged": r.get("purged", False),
@@ -329,9 +380,9 @@ def main():
     for p in persons:
         if p["is_war"]:
             for u in get_list(p["mil_unit"]): mil_idx[u].append(p["uid"])
-            for m in get_list(p["major"]): major_idx[m].append(p["uid"])
+            for m in major_list_en(p["major"]): major_idx[m].append(p["uid"])
             for u in get_list(p["mil_unit"]):
-                for m in get_list(p["major"]): compound_idx[(u, m)].append(p["uid"])
+                for m in major_list_en(p["major"]): compound_idx[(u, m)].append(p["uid"])
     print(f"Calculating True Network Statistics...")
     true_neighbors_info = defaultdict(dict)
     TrueG = nx.Graph()
@@ -367,7 +418,7 @@ def main():
     isolated_true = [u for u in TrueG.nodes() if TrueG.degree(u) == 0]
     TrueG.remove_nodes_from(isolated_true)
     print(f"Running Louvain Community Detection (Modularity)...")
-    random.seed(42)  # 커뮤니티 탐지 재현성 고정 (모듈성 Q가 매 실행 동일하게 산출되도록)
+    random.seed(42)  # fix the seed so community detection and Q are reproducible
     partition = community_louvain.best_partition(TrueG, weight='weight', resolution=1.0) if TrueG.number_of_nodes() else {}
     unique_comms = set(partition.values())
     comm_colors = {c: f"hsl({int((c * 137.5) % 360)}, 85%, 60%)" for c in unique_comms}
@@ -375,7 +426,7 @@ def main():
     for uid, c_id in partition.items():
         p = next((x for x in persons if x['uid']==uid), None)
         if p and p['major'] != 'Unknown':
-            comm_majors[c_id].extend([m.strip() for m in p['major'].split(',')])
+            comm_majors[c_id].extend(major_list_en(p['major']))
     comm_dom_major = {}
     for c_id, m_list in comm_majors.items():
         if m_list: comm_dom_major[c_id] = Counter(m_list).most_common(1)[0][0]
@@ -402,14 +453,16 @@ def main():
         return c / len(edges_tg)
     obs_h = _same_sch(sch)
     _labs = [sch[u] for u in war_nodes]
-    random.seed(42)  # 순열검정 재현성 고정 (z·obs가 매 실행 동일하게 산출되도록)
+    random.seed(42)  # fix the seed so the permutation test is reproducible
     _nulls = []
-    for _ in range(500):
+    for _ in range(5000):
         _sh = _labs[:]; random.shuffle(_sh)
         _nulls.append(_same_sch(dict(zip(war_nodes, _sh))))
     null_mean = _st.mean(_nulls) if _nulls else 0.0
     null_sd = (_st.pstdev(_nulls) if len(_nulls) > 1 else 0.0) or 1e-9
     z_homophily = (obs_h - null_mean) / null_sd
+    perm_p = (sum(1 for _x in _nulls if _x >= obs_h) + 1) / (len(_nulls) + 1)
+    print(f"   [extra] permutation p={perm_p:.5f} ({len(_nulls)} draws, share at or above observed)")
     # (2) Modularity: full (unit+major) vs specialty(major)-edge-removed (robustness)
     try:
         mod_full = community_louvain.modularity(partition, TrueG, weight='weight') if edges_tg else 0.0
@@ -421,28 +474,51 @@ def main():
             for a, b in itertools.combinations(members, 2): TrueG_nm.add_edge(a, b)
     TrueG_nm.remove_nodes_from([n for n in list(TrueG_nm.nodes()) if TrueG_nm.degree(n) == 0])
     if TrueG_nm.number_of_edges() > 0:
-        random.seed(42)  # 전공엣지 제거 모듈성 재현성 고정
+        random.seed(42)  # fix the seed for the specialty-ablation modularity
         _pnm = community_louvain.best_partition(TrueG_nm, resolution=1.0)
         mod_nomajor = community_louvain.modularity(_pnm, TrueG_nm)
     else:
         mod_nomajor = 0.0
-    # ── 본문 재작성용 추가 지표 (콘솔 출력) ──
-    _n2u = {p.get("name_ja"): p["uid"] for p in persons if p.get("is_war")}
+    # -- Additional figures reported in the article (console output) --
+    # Matched on a normalised key so that spacing and variant characters in name_ja
+    # do not prevent a match.
+    _n2u = {norm_key(p.get("name_ja", "")): p["uid"] for p in persons if p.get("is_war")}
     for _w in ("石井四郎", "北野政次"):
-        _u = _n2u.get(_w)
-        _dg = TrueG.degree(_u) if (_u is not None and _u in TrueG) else "분석망 외"
-        print(f"   [추가] {_w} degree={_dg}")
+        _u = _n2u.get(norm_key(_w))
+        _dg = TrueG.degree(_u) if (_u is not None and _u in TrueG) else "outside the analytic network"
+        print(f"   [extra] {_w} degree={_dg}")
     from collections import Counter as _Ctr
     _topd = sorted(((TrueG.degree(u), pmap[u]["school_ja"]) for u in war_nodes), reverse=True)[:10]
-    print("   [추가] 연결도 상위10 출신교:", dict(_Ctr(s for _, s in _topd)))
-    print(f"   [추가] 부대(전공엣지 제거 후) 엣지수={TrueG_nm.number_of_edges()}")
-    print(f"   [추가] 학벌 경계 넘는 연결={100*(1-obs_h):.1f}%")
+    print("   [extra] alma mater of the ten highest-degree nodes:", dict(_Ctr(s for _, s in _topd)))
+    # Decomposition into specialty-derived and unit-derived edges
+    _em = set(); _eu = set()
+    for _m, _mem in major_idx.items():
+        if len(_mem) > 1:
+            for _a, _b in itertools.combinations(_mem, 2): _em.add((min(_a, _b), max(_a, _b)))
+    for _un, _mem in mil_idx.items():
+        if len(_mem) > 1:
+            for _a, _b in itertools.combinations(_mem, 2): _eu.add((min(_a, _b), max(_a, _b)))
+    _tot = len(_em | _eu)
+    print(f"   [extra] edges={_tot} | specialty-derived={len(_em)}({100*len(_em)/max(1,_tot):.1f}%) | unit-derived={len(_eu)} | unit-only rebuild={TrueG_nm.number_of_edges()}")
+    print(f"   [extra] edges crossing school boundaries={100*(1-obs_h):.1f}%")
+    # Specialty-label normalisation check, to be read against data/major_alias_map.csv
+    _rawlab = set()
+    for _u in war_nodes:
+        for _x in str(pmap[_u].get("major") or "").replace("、", ",").replace("・", ",").split(","):
+            _x = _x.strip()
+            if _x and _x.lower() not in ("unknown", "-"): _rawlab.add(_x)
+    _normlab = set()
+    for _u in war_nodes: _normlab.update(major_list_en(pmap[_u].get("major")))
+    _nospec = [_u for _u in war_nodes if not major_list_en(pmap[_u].get("major"))]
+    print(f"   [extra] specialty labels: {len(_rawlab)} raw -> {len(_normlab)} normalised | {len(_nospec)} persons with no specialty label")
+    _isolated = [_u for _u in war_nodes if TrueG.degree(_u) == 0]
+    print(f"   [extra] analytic network {len(war_nodes)-len(_isolated)} of {len(war_nodes)} nodes | {len(_isolated)} isolates")
     # (3) Broker (top-10 betweenness) structure analysis
     top10 = [u for u, _ in sorted(betweenness.items(), key=lambda x: -x[1])[:10]]
     _degd = dict(TrueG.degree())
     _topdeg = set([u for u, _ in sorted(_degd.items(), key=lambda x: -x[1])[:10]])
     brk_overlap = len(set(top10) & _topdeg)
-    brk_dual = sum(1 for u in top10 if "," in (pmap[u]["major"] or ""))
+    brk_dual = sum(1 for u in top10 if len(major_list_en(pmap[u]["major"])) > 1)
     brk_todai = sum(1 for u in top10 if ("Tokyo" in (pmap[u]["school"] or "") or "東京" in (pmap[u]["school_ja"] or "")))
     # (4) Postwar teaching/public-office purge
     purged_total = sum(1 for p in persons if p.get("purged"))
@@ -459,9 +535,9 @@ def main():
     # ===== figures for the manuscript =====
     from collections import Counter as _C
     _sch=_C(pmap[u]["school"] for u in war_nodes)
-    _maj=_C(m.strip() for u in war_nodes for m in str(pmap[u].get("major_ja") or pmap[u].get("major") or "").replace("、",",").replace("・",",").split(",") if m.strip())
+    _maj=_C(m for u in war_nodes for m in major_list_en(pmap[u].get("major")))
     _degvals=sorted(dict(TrueG.degree()).values()) or [0]
-    _todai=sum(v for k,v in _sch.items() if ("Tokyo" in str(k)) or ("東京" in str(k)))
+    _todai=_sch.get("Tokyo Imperial University", 0) + _sch.get("東京帝国大学", 0)  # exact match only, so that other Tokyo-based schools are not summed in
     print("\n========== figures for the manuscript ==========")
     print(f"N(army nodes)={len(war_nodes)}  E(edges)={len(edges_tg)}  density={war_density:.4f}")
     print(f"Homophily: observed={obs_h*100:.1f}%  null={null_mean*100:.1f}%  z={z_homophily:.2f}")
@@ -671,6 +747,11 @@ def main():
     comm_legend_html += "</div>"
     total_count = len(persons)
     field_count = sum(1 for p in persons if p.get("field_adj"))
+    # Counter shown in the control panel. `war_count` above is computed before the
+    # birth-year filter, so it overstates the population; report the two figures the
+    # article actually uses: the verified set and the connected analytic network.
+    verified_count = sum(1 for p in persons if p.get("is_war"))
+    network_count = sum(1 for _u in war_nodes if TrueG.degree(_u) > 0)
     # [edit] Compute camera presets dynamically from actual node coordinates (safe across scale changes)
     def region_center(pred):
         xs = [pos[p["uid"]][0] for p in persons if p["uid"] in pos and pred(p["school_ja"])]
@@ -736,7 +817,7 @@ def main():
   <h3>Network Analyzer</h3>
   <div style="background:#1e293b; padding:10px; border-radius:6px; margin-bottom:12px; border:1px solid #475569; text-align:center;">
       <span style="font-size:12px; color:#cbd5e1; display:block; margin-bottom:6px;">
-          Total: <b>{total_count}</b> | Mil-Med: <b>{war_count}</b> | Field-adj: <b>{field_count}</b>
+          Roster: <b>{total_count}</b> | Verified: <b>{verified_count}</b> | Network: <b>{network_count}</b> | Field-adj: <b>{field_count}</b>
       </span>
       <label class="checkbox-container" style="justify-content:center; margin:0; padding:6px; background:#0f172a; border-radius:4px; border:1px solid #3b82f6; color:#60a5fa;">
         <input type="checkbox" id="warOnlyToggle"> ️ Show Military Med Only
@@ -826,7 +907,7 @@ def main():
 <div id="statsModal">
   <h3>Statistical Validation (computed, not placeholder)</h3>
   <div class="stats-section">
-    <b>1. School Homophily (permutation test, n=500)</b><br>
+    <b>1. School Homophily (permutation test, n=5,000)</b><br>
     Military-medicine subnetwork: {len(war_nodes)} nodes · {len(edges_tg)} edges<br>
     Observed same-school edges <b>{obs_h*100:.1f}%</b> vs null mean {null_mean*100:.1f}%
     <div style="width:100%;background:#0f172a;border:1px solid #475569;border-radius:4px;height:14px;position:relative;overflow:hidden;margin-top:5px;">
