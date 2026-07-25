@@ -51,7 +51,7 @@ With `nodes.csv` + `edges.csv`:
 
 Specialty strings are normalized before edges are built, mirroring the school alias map.
 The rules are released as `major_alias_map.csv` and implemented in `major_list_en()` in
-`../japan_medical_network_army.py`:
+`japan_medical_network_army.py`:
 
 1. **Case unification.** Machine translation returned the same specialty with different
    capitalization (`Internal medicine` / `internal medicine`, `surgery` / `Surgery`, …);
@@ -73,11 +73,11 @@ against 452 / 31 under the earlier unnormalized convention.
 
 ## Interactive viewer
 
-`../japan_medical_network.html` is the self-contained interactive viewer (geo-topology layout,
+`japan_medical_network.html` is the self-contained interactive viewer (geo-topology layout,
 community colouring, per-person relation badges). It embeds the same node metadata used above
 in a `var meta = {...}` block, so the network can also be reconstructed directly from it.
 Visualization-only controls (hiding or filtering edges on screen) do not affect any computed
 statistic.
 
-A verification script (`../verify_paper_numbers.py`) and the full pipeline
-(`../japan_medical_network_army.py`) are provided alongside.
+A verification script (`verify_paper_numbers.py`) and the full pipeline
+(`japan_medical_network_army.py`) are provided alongside.
