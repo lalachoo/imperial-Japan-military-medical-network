@@ -10,16 +10,18 @@ data and reports PASS / FAIL against the values printed in the paper.
     The Imperial Japanese Army Medical Corps, 1931-1945
 
 WHAT IT READS
-    data/nodes.csv   444 nodes  (id, name, school, major, military_unit, degree,
-                                 betweenness_rank, community, unit731)
-    data/edges.csv   8,024 undirected edges (source, target, weight, type)
+    nodes.csv   444 nodes  (id, name, school, major, military_unit, degree,
+                            betweenness_rank, community, unit731)
+    edges.csv   8,024 undirected edges (source, target, weight, type)
+
+    Either beside this script or in a data/ subdirectory; both layouts work.
 
     Nothing else. No source spreadsheets, no translation API, no internet.
 
 HOW TO RUN
     python verify_paper_numbers.py
 
-    Run it from the repository root, i.e. the directory that contains `data/`.
+    Run it from the directory that holds the CSV files.
     Standard library only - no pandas, networkx, or python-louvain required.
     A multilevel Louvain implementation is included below so that community
     detection is reproducible without external packages.
@@ -49,12 +51,19 @@ from collections import Counter, defaultdict
 SEED = 42
 N_PERM = 5000
 HERE = os.path.dirname(os.path.abspath(__file__))
-DATA = os.path.join(HERE, "data")
+
+
+def _find(name):
+    """Locate a data file whether it sits in ./data/ or beside this script."""
+    for cand in (os.path.join(HERE, "data", name), os.path.join(HERE, name)):
+        if os.path.exists(cand):
+            return cand
+    return os.path.join(HERE, "data", name)
 
 
 # ----------------------------------------------------------------------------
 # Specialty-label normalisation - identical to major_list_en() in the pipeline.
-# Released as data/major_alias_map.csv.
+# Released as major_alias_map.csv.
 # ----------------------------------------------------------------------------
 MAJOR_NON_SPECIALTY = {
     "poet", "haiku poet", "essayist", "western painter", "buddhist", "mountaineer",
@@ -268,11 +277,14 @@ def check(label, got, expected, tol=0.0, note=""):
 
 
 def main():
-    npath = os.path.join(DATA, "nodes.csv")
-    epath = os.path.join(DATA, "edges.csv")
+    npath = _find("nodes.csv")
+    epath = _find("edges.csv")
     for p in (npath, epath):
         if not os.path.exists(p):
-            raise SystemExit(f"[stop] not found: {p}\n       Run this script from the repository root.")
+            raise SystemExit(
+                f"[stop] not found: {os.path.basename(p)}\n"
+                f"       Expected in {HERE} or {os.path.join(HERE, 'data')}."
+            )
 
     with open(npath, encoding="utf-8") as fh:
         rows = list(csv.DictReader(fh))
