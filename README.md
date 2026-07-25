@@ -29,11 +29,11 @@ of the geo-topology layout.
 | `japan_medical_network_army.py` | Full pipeline: ingestion, normalisation, network construction, statistics, viewer |
 | `verify_paper_numbers.py` | Reproduces every figure in the article from the released CSVs and reports PASS / FAIL |
 | `japan_medical_network.html` | Interactive viewer; also embeds the node metadata in a `var meta = {...}` block |
-| `data/nodes.csv` | 444 nodes with attributes, degree, betweenness rank, community, 731 marker |
-| `data/edges.csv` | 8,024 undirected edges with weight and channel type |
-| `data/school_alias_map.csv` | Orthographic normalisation of school names |
-| `data/major_alias_map.csv` | Normalisation of specialty labels |
-| `data/README_data.md` | Column definitions and the headline figures to reproduce |
+| `nodes.csv` | 444 nodes with attributes, degree, betweenness rank, community, 731 marker |
+| `edges.csv` | 8,024 undirected edges with weight and channel type |
+| `school_alias_map.csv` | Orthographic normalisation of school names |
+| `major_alias_map.csv` | Normalisation of specialty labels |
+| `README_data.md` | Column definitions and the headline figures to reproduce |
 
 ## Data
 
@@ -66,10 +66,10 @@ works from the released CSVs alone and contains its own Louvain implementation:
 
 ## Reproducing the article
 
-    python verify_paper_numbers.py     # checks all reported figures against data/
+    python verify_paper_numbers.py     # checks all reported figures against the CSVs
 
 This is the recommended entry point for a reader or reviewer. It rebuilds the network
-statistics from `data/nodes.csv` and `data/edges.csv` and prints a PASS / FAIL line for
+statistics from `nodes.csv` and `edges.csv` and prints a PASS / FAIL line for
 each claim, including the permutation tests, assortativity coefficients, community
 structure, the edge-ablation diagnostic and Table 2.
 
